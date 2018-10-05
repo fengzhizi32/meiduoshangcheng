@@ -1,0 +1,33 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="20">
+            <item index="0" class="java.lang.String" itemvalue="blinker" />
+            <item index="1" class="java.lang.String" itemvalue="mysqlclient" />
+            <item index="2" class="java.lang.String" itemvalue="alembic" />
+            <item index="3" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="4" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="5" class="java.lang.String" itemvalue="pkg-resources" />
+            <item index="6" class="java.lang.String" itemvalue="uWSGI" />
+            <item index="7" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="8" class="java.lang.String" itemvalue="click" />
+            <item index="9" class="java.lang.String" itemvalue="Flask-Bootstrap" />
+            <item index="10" class="java.lang.String" itemvalue="Flask-Login" />
+            <item index="11" class="java.lang.String" itemvalue="dominate" />
+            <item index="12" class="java.lang.String" itemvalue="Flask-Redis" />
+            <item index="13" class="java.lang.String" itemvalue="Flask-Mail" />
+            <item index="14" class="java.lang.String" itemvalue="Flask-Migrate" />
+            <item index="15" class="java.lang.String" itemvalue="xmltodict" />
+            <item index="16" class="java.lang.String" itemvalue="PyMySQL" />
+            <item index="17" class="java.lang.String" itemvalue="Flask-Testing" />
+            <item index="18" class="java.lang.String" itemvalue="Mako" />
+            <item index="19" class="java.lang.String" itemvalue="visitor" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
