@@ -44,13 +44,13 @@ INSTALLED_APPS = [
     'areas.apps.AreasConfig',
     'cart.apps.CartConfig',
     'contents.apps.ContentsConfig',
-    'goods.apps.GoodConfig',
+    'goods.apps.GoodsConfig',
     'oauth.apps.OauthConfig',
     'orders.apps.OrdersConfig',
     'pay.apps.PayConfig',
     'users.apps.UsersConfig',
     'verifications.apps.VerificationsConfig',
-    'rest_framwork',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -204,5 +204,10 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
 }
 
-
+# 因为现在我们的用户系统是采用系统的模型类
+# 因为继承了系统的模型类,所以我们可以采用系统提供的认证机制
+# 我们需要通过 AUTH_USER_MODEL 这个设置去告诉系统我们的用户模型类是哪一个
+# AUTH_USER_MODEL  = '子应用名.用户模型类'
+# 注意事项:只能有一个
+AUTH_USER_MODEL = 'users.User'
 
