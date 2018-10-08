@@ -54,8 +54,8 @@
 					<li>
 						<label>短信验证码:</label>
 						<input type="text" v-model="sms_code" @blur="check_sms_code" name="msg_code" id="msg_code" class="msg_input">
-						<a href="#" class="get_msg_code">获取短信验证码</a>
-						<span v-show="error_sms_code" class="error_tip">请填写短信验证码</span>
+						<a @click="send_sms_code" class="get_msg_code">{{ sms_code_tip }}</a>
+						<span v-show="error_sms_code" class="error_tip">{{ error_sms_code_message }}</span>
 					</li>
 					<li class="agreement">
 						<input type="checkbox" v-model="allow" @change="check_allow" name="allow" id="allow" checked="checked">

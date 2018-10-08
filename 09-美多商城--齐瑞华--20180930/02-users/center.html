@@ -1,0 +1,2017 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    <!-- Start book django项目 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>用户中心 | django项目</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../02-users/mail.html" />
+    
+    
+    <link rel="prev" href="../02-users/qq/three.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="2.8"
+        data-chapter-title="用户中心"
+        data-filepath="02-users/center.md"
+        data-basepath=".."
+        data-revision="Tue Jul 17 2018 00:04:53 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        美多商城
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01-prepare.html">
+            
+                
+                    <a href="../01-prepare.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        项目准备
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01-prepare/mode.html">
+            
+                
+                    <a href="../01-prepare/mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        商业模式介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01-prepare/flow.html">
+            
+                
+                    <a href="../01-prepare/flow.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        开发流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01-prepare/anaylize.html">
+            
+                
+                    <a href="../01-prepare/anaylize.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        需求分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01-prepare/frame.html">
+            
+                
+                    <a href="../01-prepare/frame.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        项目架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="01-prepare/git.html">
+            
+                
+                    <a href="../01-prepare/git.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        git代码管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="01-prepare/project.html">
+            
+                
+                    <a href="../01-prepare/project.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        创建工程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="01-prepare/configure.html">
+            
+                
+                    <a href="../01-prepare/configure.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="02-users.html">
+            
+                
+                    <a href="../02-users.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        用户部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="02-users/model.html">
+            
+                
+                    <a href="../02-users/model.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        用户模型类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="02-users/register.html">
+            
+                
+                    <a href="../02-users/register.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        注册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="02-users/register/user.html">
+            
+                
+                    <a href="../02-users/register/user.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        用户名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="02-users/register/phone.html">
+            
+                
+                    <a href="../02-users/register/phone.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                        手机号
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="02-users/register/captcha.html">
+            
+                
+                    <a href="../02-users/register/captcha.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.3.</b>
+                        
+                        验证图片
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="02-users/register/sms.html">
+            
+                
+                    <a href="../02-users/register/sms.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.4.</b>
+                        
+                        手机验证码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="02-users/register/celery.html">
+            
+                
+                    <a href="../02-users/register/celery.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.5.</b>
+                        
+                        Celery完成发送短信
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="02-users/register/register.html">
+            
+                
+                    <a href="../02-users/register/register.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.6.</b>
+                        
+                        注册
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="02-users/cors.html">
+            
+                
+                    <a href="../02-users/cors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        跨域CORS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="02-users/jwt.html">
+            
+                
+                    <a href="../02-users/jwt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        JWT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="02-users/djangorestframeworkjwt.html">
+            
+                
+                    <a href="../02-users/djangorestframeworkjwt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        Django REST framework JWT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="02-users/login.html">
+            
+                
+                    <a href="../02-users/login.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        登录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="02-users/qq.html">
+            
+                
+                    <a href="../02-users/qq.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        QQ第三方登录
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="02-users/qq/one.html">
+            
+                
+                    <a href="../02-users/qq/one.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.1.</b>
+                        
+                        第一步
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="02-users/qq/two.html">
+            
+                
+                    <a href="../02-users/qq/two.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.</b>
+                        
+                        第二步
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.2.1" data-path="02-users/qq/two/url.html">
+            
+                
+                    <a href="../02-users/qq/two/url.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.1.</b>
+                        
+                        QQ登录回调页面
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2.2" data-path="02-users/qq/two/token.html">
+            
+                
+                    <a href="../02-users/qq/two/token.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.2.</b>
+                        
+                        获取Access\_Token
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2.3" data-path="02-users/qq/two/openid.html">
+            
+                
+                    <a href="../02-users/qq/two/openid.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.3.</b>
+                        
+                        获取OpenID
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2.4" data-path="02-users/qq/two/itsdangerous.html">
+            
+                
+                    <a href="../02-users/qq/two/itsdangerous.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.4.</b>
+                        
+                        itsdangerous生成激活token
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2.5" data-path="02-users/qq/two/qqlogintoken.html">
+            
+                
+                    <a href="../02-users/qq/two/qqlogintoken.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.5.</b>
+                        
+                        判断用户QQ绑定状态
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="02-users/qq/three.html">
+            
+                
+                    <a href="../02-users/qq/three.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.3.</b>
+                        
+                        第三步
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.8" data-path="02-users/center.html">
+            
+                
+                    <a href="../02-users/center.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        用户中心
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="02-users/mail.html">
+            
+                
+                    <a href="../02-users/mail.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        邮件验证
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.9.1" data-path="02-users/mail/setting.html">
+            
+                
+                    <a href="../02-users/mail/setting.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.1.</b>
+                        
+                        使用Django发送邮件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.2" data-path="02-users/mail/send.html">
+            
+                
+                    <a href="../02-users/mail/send.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.2.</b>
+                        
+                        保存邮箱并发送验证邮件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3" data-path="02-users/mail/valid.html">
+            
+                
+                    <a href="../02-users/mail/valid.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.3.</b>
+                        
+                        验证邮箱链接
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="02-users/address.html">
+            
+                
+                    <a href="../02-users/address.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.</b>
+                        
+                        收货地址
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.10.1" data-path="02-users/address/select.html">
+            
+                
+                    <a href="../02-users/address/select.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.1.</b>
+                        
+                        省市区地址查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.2" data-path="02-users/address/cache.html">
+            
+                
+                    <a href="../02-users/address/cache.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.2.</b>
+                        
+                        使用缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3" data-path="02-users/address/useraddress.html">
+            
+                
+                    <a href="../02-users/address/useraddress.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.</b>
+                        
+                        户地址管理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.10.3.1" data-path="02-users/address/useraddress/add.html">
+            
+                
+                    <a href="../02-users/address/useraddress/add.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.1.</b>
+                        
+                        增加地址
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3.2" data-path="02-users/address/useraddress/list.html">
+            
+                
+                    <a href="../02-users/address/useraddress/list.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.2.</b>
+                        
+                        地址列表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3.3" data-path="02-users/address/useraddress/destroy.html">
+            
+                
+                    <a href="../02-users/address/useraddress/destroy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.3.</b>
+                        
+                        删除地址
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3.4" data-path="02-users/address/useraddress/update.html">
+            
+                
+                    <a href="../02-users/address/useraddress/update.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.4.</b>
+                        
+                        修改信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3.5" data-path="02-users/address/useraddress/default.html">
+            
+                
+                    <a href="../02-users/address/useraddress/default.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.5.</b>
+                        
+                        设置为默认地址
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="03-goods.html">
+            
+                
+                    <a href="../03-goods.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        商品部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="03-goods/model.html">
+            
+                
+                    <a href="../03-goods/model.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        数据表设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="03-goods/fastdfs.html">
+            
+                
+                    <a href="../03-goods/fastdfs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        FastDFS分布式文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="03-goods/docker.html">
+            
+                
+                    <a href="../03-goods/docker.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        Docker使用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="03-goods/docker/intro.html">
+            
+                
+                    <a href="../03-goods/docker/intro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.1.</b>
+                        
+                        Docker简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="03-goods/docker/install.html">
+            
+                
+                    <a href="../03-goods/docker/install.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.2.</b>
+                        
+                        Docker安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.3" data-path="03-goods/docker/opt.html">
+            
+                
+                    <a href="../03-goods/docker/opt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.3.</b>
+                        
+                        Docker操作
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="03-goods/dockerfastdfs.html">
+            
+                
+                    <a href="../03-goods/dockerfastdfs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        使用Docker安装FastDFS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="03-goods/file.html">
+            
+                
+                    <a href="../03-goods/file.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        FastDFS客户端与自定义文件存储系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="03-goods/ckeditor.html">
+            
+                
+                    <a href="../03-goods/ckeditor.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        CKEditor富文本编辑器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="03-goods/addtestdata.html">
+            
+                
+                    <a href="../03-goods/addtestdata.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        添加测试数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="03-goods/mall.html">
+            
+                
+                    <a href="../03-goods/mall.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        首页数据
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.8.1" data-path="03-goods/mall/static.html">
+            
+                
+                    <a href="../03-goods/mall/static.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.1.</b>
+                        
+                        页面静态化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8.2" data-path="03-goods/mall/script.html">
+            
+                
+                    <a href="../03-goods/mall/script.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.2.</b>
+                        
+                        静态化首页脚本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8.3" data-path="03-goods/mall/time.html">
+            
+                
+                    <a href="../03-goods/mall/time.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.3.</b>
+                        
+                        定时任务
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="03-goods/detail.html">
+            
+                
+                    <a href="../03-goods/detail.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        商品详情页
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.9.1" data-path="03-goods/detail/happen.html">
+            
+                
+                    <a href="../03-goods/detail/happen.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.1.</b>
+                        
+                        异步任务的触发
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9.2" data-path="03-goods/detail/script.html">
+            
+                
+                    <a href="../03-goods/detail/script.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.2.</b>
+                        
+                        脚本工具
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="03-goods/history.html">
+            
+                
+                    <a href="../03-goods/history.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        用户浏览历史
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="03-goods/list.html">
+            
+                
+                    <a href="../03-goods/list.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        商品列表
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.11.1" data-path="03-goods/list/hot.html">
+            
+                
+                    <a href="../03-goods/list/hot.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.1.</b>
+                        
+                        热销商品
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11.2" data-path="03-goods/list/list.html">
+            
+                
+                    <a href="../03-goods/list/list.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.2.</b>
+                        
+                        商品列表数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11.3" data-path="03-goods/hot.html">
+            
+                
+                    <a href="../03-goods/hot.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.3.</b>
+                        
+                        商品列表静态化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11.4" data-path="03-goods/celeryhappend.html">
+            
+                
+                    <a href="../03-goods/celeryhappend.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.4.</b>
+                        
+                        异步任务的触发
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="03-goods/search.html">
+            
+                
+                    <a href="../03-goods/search.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.12.</b>
+                        
+                        商品搜索
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="04-cart.html">
+            
+                
+                    <a href="../04-cart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        购物车
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="04-cart/design.html">
+            
+                
+                    <a href="../04-cart/design.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        购物车数据存储设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="04-cart/cart.html">
+            
+                
+                    <a href="../04-cart/cart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        购物车实现
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="04-cart/cart/add.html">
+            
+                
+                    <a href="../04-cart/cart/add.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.1.</b>
+                        
+                        添加到购物车
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="04-cart/cart/select.html">
+            
+                
+                    <a href="../04-cart/cart/select.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.2.</b>
+                        
+                        查询购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="04-cart/cart/update.html">
+            
+                
+                    <a href="../04-cart/cart/update.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.3.</b>
+                        
+                        修改购物车数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="04-cart/cart/delete.html">
+            
+                
+                    <a href="../04-cart/cart/delete.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.4.</b>
+                        
+                        删除购物车数据
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="04-cart/merge.html">
+            
+                
+                    <a href="../04-cart/merge.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        登录合并购物车
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="05-order.html">
+            
+                
+                    <a href="../05-order.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        订单部分
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="05-order/design.html">
+            
+                
+                    <a href="../05-order/design.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        订单数据库设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="05-order/order.html">
+            
+                
+                    <a href="../05-order/order.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        订单结算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="05-order/save.html">
+            
+                
+                    <a href="../05-order/save.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        保存订单
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.3.1" data-path="05-order/save/transcation.html">
+            
+                
+                    <a href="../05-order/save/transcation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.1.</b>
+                        
+                        数据库事务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3.2" data-path="05-order/save/thread.html">
+            
+                
+                    <a href="../05-order/save/thread.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.2.</b>
+                        
+                        并发处理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="05-order/success.html">
+            
+                
+                    <a href="../05-order/success.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        下单成功
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="06-pay.html">
+            
+                
+                    <a href="../06-pay.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        支付宝支付
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="06-pay/interface.html">
+            
+                
+                    <a href="../06-pay/interface.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        接入支付宝
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="06-pay/pay.html">
+            
+                
+                    <a href="../06-pay/pay.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        发起支付
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="06-pay/savepay.html">
+            
+                
+                    <a href="../06-pay/savepay.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        保存支付结果
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="07-xadmin.html">
+            
+                
+                    <a href="../07-xadmin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        XAdmin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="08-limitcontrol.html">
+            
+                
+                    <a href="../08-limitcontrol.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        用户权限控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="09-mysql.html">
+            
+                
+                    <a href="../09-mysql.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        数据库配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="09-mysql/master.html">
+            
+                
+                    <a href="../09-mysql/master.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        主从同步
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="09-mysql/septer.html">
+            
+                
+                    <a href="../09-mysql/septer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        读写分离
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="10-online.html">
+            
+                
+                    <a href="../10-online.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Django部署
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >django项目</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7528;&#x6237;&#x4E2D;&#x5FC3;&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;">&#x7528;&#x6237;&#x4E2D;&#x5FC3;&#x4E2A;&#x4EBA;&#x4FE1;&#x606F; </h1>
+<p>&#x524D;&#x7AEF;&#x8BBF;&#x95EE;&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&#x9875;&#x9762;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5411;&#x540E;&#x7AEF;&#x8BF7;&#x6C42;&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x5728;&#x672C;&#x9875;&#x9762;&#x4E2D;&#x8981;&#x663E;&#x793A;&#x7528;&#x6237;&#x7684;Email&#x90AE;&#x7BB1;&#x4FE1;&#x606F;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E;&#x90AE;&#x7BB1;&#x4FE1;&#x606F;&#x6211;&#x4EEC;&#x8981;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x90AE;&#x7BB1;&#x7684;&#x9A8C;&#x8BC1;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x5728;&#x672C;&#x9875;&#x9762;&#x4E2D;&#x663E;&#x793A;&#x90AE;&#x7BB1;&#x662F;&#x5426;&#x5DF2;&#x9A8C;&#x8BC1;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;</p>
+<p><img src="../assets/user_center_ok.png" alt=""></p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;User&#x6A21;&#x578B;&#x7C7B;&#xFF0C;&#x589E;&#x52A0;&#x90AE;&#x7BB1;&#x662F;&#x5426;&#x9A8C;&#x8BC1;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<pre><code>from django.db import models
+from django.contrib.auth.models import AbstractUser
+# Create your models here.
+class User(AbstractUser):
+    &quot;&quot;&quot;&#x7528;&#x6237;&#x6A21;&#x578B;&#x7C7B;&quot;&quot;&quot;
+    mobile = models.CharField(max_length=11, unique=True, verbose_name=&apos;&#x624B;&#x673A;&#x53F7;&apos;)
+
+    email_active = models.BooleanField(default=False, verbose_name=&apos;&#x90AE;&#x7BB1;&#x9A8C;&#x8BC1;&#x72B6;&#x6001;&apos;)
+
+    class Meta:
+        db_table = &apos;tb_users&apos;
+        verbose_name = &apos;&#x7528;&#x6237;&apos;
+        verbose_name_plural = verbose_name
+</code></pre><p>&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5E93;&#x8FC1;&#x79FB;</p>
+<pre><code>python manage.py makemigrations
+python manage.py migrate
+</code></pre><h4 id="&#x540E;&#x7AEF;&#x63A5;&#x53E3;&#x8BBE;&#x8BA1;&#xFF1A;">&#x540E;&#x7AEF;&#x63A5;&#x53E3;&#x8BBE;&#x8BA1;&#xFF1A; </h4>
+<p>&#x8BF7;&#x6C42;&#x65B9;&#x5F0F;&#xFF1A; GET/users/infos/</p>
+<p>&#x8FD4;&#x56DE;&#x6570;&#x636E;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x503C;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x662F;&#x5426;&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x7528;&#x6237;id</td>
+</tr>
+<tr>
+<td style="text-align:left">username</td>
+<td style="text-align:left">str</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x7528;&#x6237;&#x540D;</td>
+</tr>
+<tr>
+<td style="text-align:left">mobile</td>
+<td style="text-align:left">str</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x624B;&#x673A;&#x53F7;</td>
+</tr>
+<tr>
+<td style="text-align:left">email</td>
+<td style="text-align:left">str</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">email&#x90AE;&#x7BB1;</td>
+</tr>
+<tr>
+<td style="text-align:left">email_active</td>
+<td style="text-align:left">bool</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x90AE;&#x7BB1;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x9A8C;&#x8BC1;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5728;users/serializers.py&#x4E2D;&#x521B;&#x5EFA;&#x5E8F;&#x5217;&#x5316;&#x5668;</p>
+<pre><code>class UserDetailSerializer(serializers.ModelSerializer):
+    &quot;&quot;&quot;
+    &#x7528;&#x6237;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x5E8F;&#x5217;&#x5316;&#x5668;
+    &quot;&quot;&quot;
+    class Meta:
+        model = User
+        fields = (&apos;id&apos;, &apos;username&apos;, &apos;mobile&apos;, &apos;email&apos;, &apos;email_active&apos;)
+</code></pre><p>&#x5728;users/views.py &#x4E2D;&#x65B0;&#x5EFA;&#x89C6;&#x56FE;</p>
+<pre><code>from rest_framework.generics import RetrieveAPIView
+from rest_framework.permissions import IsAuthenticated
+from .serializers import UserDetailSerializer
+
+class UserDetailView(RetrieveAPIView):
+    &quot;&quot;&quot;
+    &#x83B7;&#x53D6;&#x767B;&#x5F55;&#x7528;&#x6237;&#x7684;&#x4FE1;&#x606F;
+    GET /users/
+    &#x65E2;&#x7136;&#x662F;&#x767B;&#x5F55;&#x7528;&#x6237;,&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x7528;&#x5230;&#x6743;&#x9650;&#x7BA1;&#x7406;
+    &#x5728;&#x7C7B;&#x89C6;&#x56FE;&#x5BF9;&#x8C61;&#x4E2D;&#x4E5F;&#x4FDD;&#x5B58;&#x4E86;&#x8BF7;&#x6C42;&#x5BF9;&#x8C61;request
+    request&#x5BF9;&#x8C61;&#x7684;user&#x5C5E;&#x6027;&#x662F;&#x901A;&#x8FC7;&#x8BA4;&#x8BC1;&#x68C0;&#x9A8C;&#x4E4B;&#x540E;&#x7684;&#x8BF7;&#x6C42;&#x7528;&#x6237;&#x5BF9;&#x8C61;
+    &quot;&quot;&quot;
+    permission_classes = [IsAuthenticated]
+
+    serializer_class = UserDetailSerializer
+
+    def get_object(self):
+        return self.request.user
+</code></pre><p><strong>&#x6CE8;&#x610F;&#xFF1A;&#x8BBF;&#x95EE;&#x89C6;&#x56FE;&#x5FC5;&#x987B;&#x8981;&#x6C42;&#x7528;&#x6237;&#x5DF2;&#x901A;&#x8FC7;&#x8BA4;&#x8BC1;&#xFF08;&#x5373;&#x767B;&#x5F55;&#x4E4B;&#x540E;&#xFF09;</strong></p>
+<p>&#x5728;users&#x5E94;&#x7528;&#x7684;urls.py&#x4E2D;&#x6DFB;&#x52A0;&#x8DEF;&#x7531;&#x5339;&#x914D;&#x4FE1;&#x606F;</p>
+<pre><code>urlpatterns = [
+   ...
+    #GET /users/infos/
+    url(r&apos;^infos/$&apos;,views.UserDetailView.as_view(),name=&apos;detail&apos;),
+
+]
+</code></pre><h3 id="&#x524D;&#x7AEF;">&#x524D;&#x7AEF; </h3>
+<p>&#x4FEE;&#x6539;user_center_info.html&#xFF0C;&#x589E;&#x52A0;Vue&#x7684;&#x53D8;&#x91CF;</p>
+<pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xml:lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;
+    &lt;title&gt;&#x7F8E;&#x591A;&#x5546;&#x57CE;-&#x7528;&#x6237;&#x4E2D;&#x5FC3;&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/reset.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/main.css&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/host.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue-2.5.16.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/axios-0.18.0.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        var user_id = sessionStorage.user_id || localStorage.user_id;
+        var token = sessionStorage.token || localStorage.token;
+        if (!(user_id &amp;&amp; token)) {
+            location.href = &apos;/login.html?next=/user_center_info.html&apos;;
+        }
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot; v-cloak&gt;
+    &lt;div class=&quot;header_con&quot;&gt;
+        &lt;div class=&quot;header&quot;&gt;
+            &lt;div class=&quot;welcome fl&quot;&gt;&#x6B22;&#x8FCE;&#x6765;&#x5230;&#x7F8E;&#x591A;&#x5546;&#x57CE;!&lt;/div&gt;
+            &lt;div class=&quot;fr&quot;&gt;
+                &lt;div class=&quot;login_btn fl&quot;&gt;
+                    &#x6B22;&#x8FCE;&#x60A8;&#xFF1A;&lt;em&gt;{{ username }}&lt;/em&gt;
+                    &lt;span&gt;|&lt;/span&gt;
+                    &lt;a @click=&quot;logout&quot;&gt;&#x9000;&#x51FA;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;user_link fl&quot;&gt;
+                    &lt;span&gt;|&lt;/span&gt;
+                    &lt;a href=&quot;user_center_info.html&quot;&gt;&#x7528;&#x6237;&#x4E2D;&#x5FC3;&lt;/a&gt;
+                    &lt;span&gt;|&lt;/span&gt;
+                    &lt;a href=&quot;cart.html&quot;&gt;&#x6211;&#x7684;&#x8D2D;&#x7269;&#x8F66;&lt;/a&gt;
+                    &lt;span&gt;|&lt;/span&gt;
+                    &lt;a href=&quot;user_center_order.html&quot;&gt;&#x6211;&#x7684;&#x8BA2;&#x5355;&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;search_bar clearfix&quot;&gt;
+        &lt;a href=&quot;index.html&quot; class=&quot;logo fl&quot;&gt;&lt;img src=&quot;images/logo.png&quot;&gt;&lt;/a&gt;
+        &lt;div class=&quot;sub_page_name fl&quot;&gt;|&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&#x7528;&#x6237;&#x4E2D;&#x5FC3;&lt;/div&gt;
+        &lt;form method=&quot;get&quot; action=&quot;/search.html&quot; class=&quot;search_con fr mt40&quot;&gt;
+            &lt;input type=&quot;text&quot; class=&quot;input_text fl&quot; name=&quot;q&quot; placeholder=&quot;&#x641C;&#x7D22;&#x5546;&#x54C1;&quot;&gt;
+            &lt;input type=&quot;submit&quot; class=&quot;input_btn fr&quot; name=&quot;&quot; value=&quot;&#x641C;&#x7D22;&quot;&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;main_con clearfix&quot;&gt;
+        &lt;div class=&quot;left_menu_con clearfix&quot;&gt;
+            &lt;h3&gt;&#x7528;&#x6237;&#x4E2D;&#x5FC3;&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;user_center_info.html&quot; class=&quot;active&quot;&gt;&#xB7; &#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;user_center_order.html&quot;&gt;&#xB7; &#x5168;&#x90E8;&#x8BA2;&#x5355;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;user_center_site.html&quot;&gt;&#xB7; &#x6536;&#x8D27;&#x5730;&#x5740;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;user_center_pass.html&quot;&gt;&#xB7; &#x4FEE;&#x6539;&#x5BC6;&#x7801;&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;right_content clearfix&quot;&gt;
+                &lt;div class=&quot;info_con clearfix&quot;&gt;
+                &lt;h3 class=&quot;common_title2&quot;&gt;&#x57FA;&#x672C;&#x4FE1;&#x606F;&lt;/h3&gt;
+                        &lt;ul class=&quot;user_info_list&quot;&gt;
+                            &lt;li&gt;&lt;span&gt;&#x7528;&#x6237;&#x540D;&#xFF1A;&lt;/span&gt;{{ username }}&lt;/li&gt;
+                            &lt;li&gt;&lt;span&gt;&#x624B;&#x673A;&#x53F7;&#xFF1A;&lt;/span&gt;{{ mobile }}&lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;span&gt;Email&#xFF1A;&lt;/span&gt;
+                                &lt;div v-if=&quot;set_email&quot;&gt;
+                                    &lt;input v-model=&quot;email&quot; type=&quot;email&quot; name=&quot;email&quot;&gt;
+                                    &lt;input @click=&quot;save_email&quot; type=&quot;button&quot; name=&quot;&quot; value=&quot;&#x4FDD; &#x5B58;&quot;&gt;
+                                    &lt;input @click=&quot;set_email=false&quot; type=&quot;reset&quot; name=&quot;&quot; value=&quot;&#x53D6; &#x6D88;&quot;&gt;
+                                    &lt;div v-if=&quot;email_error&quot;&gt;&#x90AE;&#x7BB1;&#x683C;&#x5F0F;&#x9519;&#x8BEF;&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div v-else-if=&quot;email&quot;&gt;
+                                    {{ email }}
+                                    &lt;div v-if=&quot;email_active&quot;&gt;&#x5DF2;&#x9A8C;&#x8BC1;&lt;/div&gt;
+                                    &lt;div v-else&gt;
+                                        &#x5F85;&#x9A8C;&#x8BC1;&lt;input @click=&quot;save_email&quot; :disabled=&quot;send_email_btn_disabled&quot; type=&quot;button&quot; :value=&quot;send_email_tip&quot;&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div v-else&gt;
+                                    &lt;input @click=&quot;set_email=true&quot; type=&quot;button&quot; name=&quot;&quot; value=&quot;&#x8BBE; &#x7F6E;&quot;&gt;
+                                &lt;/div&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                &lt;/div&gt;
+
+                &lt;h3 class=&quot;common_title2&quot;&gt;&#x6700;&#x8FD1;&#x6D4F;&#x89C8;&lt;/h3&gt;
+                &lt;div class=&quot;has_view_list&quot;&gt;
+                    &lt;ul class=&quot;goods_type_list clearfix&quot;&gt;
+                &lt;li&gt;
+                    &lt;a href=&quot;detail.html&quot;&gt;&lt;img src=&quot;images/goods/goods003.jpg&quot;&gt;&lt;/a&gt;
+                    &lt;h4&gt;&lt;a href=&quot;detail.html&quot;&gt;360&#x624B;&#x673A; N6 Pro &#x5168;&#x7F51;&#x901A;&lt;/a&gt;&lt;/h4&gt;
+                    &lt;div class=&quot;operate&quot;&gt;
+                        &lt;span class=&quot;prize&quot;&gt;&#xFFE5;2699.00&lt;/span&gt;
+                        &lt;span class=&quot;unit&quot;&gt;&#x53F0;&lt;/span&gt;
+                        &lt;a href=&quot;#&quot; class=&quot;add_goods&quot; title=&quot;&#x52A0;&#x5165;&#x8D2D;&#x7269;&#x8F66;&quot;&gt;&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/goods/goods004.jpg&quot;&gt;&lt;/a&gt;
+                    &lt;h4&gt;&lt;a href=&quot;#&quot;&gt;360&#x624B;&#x673A; N6 Pro &#x5168;&#x7F51;&#x901A;&lt;/a&gt;&lt;/h4&gt;
+                    &lt;div class=&quot;operate&quot;&gt;
+                        &lt;span class=&quot;prize&quot;&gt;&#xFFE5;2699.00&lt;/span&gt;
+                        &lt;span class=&quot;unit&quot;&gt;&#x53F0;&lt;/span&gt;
+                        &lt;a href=&quot;#&quot; class=&quot;add_goods&quot; title=&quot;&#x52A0;&#x5165;&#x8D2D;&#x7269;&#x8F66;&quot;&gt;&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/goods/goods005.jpg&quot;&gt;&lt;/a&gt;
+                    &lt;h4&gt;&lt;a href=&quot;#&quot;&gt;360&#x624B;&#x673A; N6 Pro &#x5168;&#x7F51;&#x901A;&lt;/a&gt;&lt;/h4&gt;
+                    &lt;div class=&quot;operate&quot;&gt;
+                        &lt;span class=&quot;prize&quot;&gt;&#xFFE5;2699.00&lt;/span&gt;
+                        &lt;span class=&quot;unit&quot;&gt;&#x53F0;&lt;/span&gt;
+                        &lt;a href=&quot;#&quot; class=&quot;add_goods&quot; title=&quot;&#x52A0;&#x5165;&#x8D2D;&#x7269;&#x8F66;&quot;&gt;&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/goods/goods006.jpg&quot;&gt;&lt;/a&gt;
+                    &lt;h4&gt;&lt;a href=&quot;#&quot;&gt;360&#x624B;&#x673A; N6 Pro &#x5168;&#x7F51;&#x901A;&lt;/a&gt;&lt;/h4&gt;
+                    &lt;div class=&quot;operate&quot;&gt;
+                        &lt;span class=&quot;prize&quot;&gt;&#xFFE5;2699.00&lt;/span&gt;
+                        &lt;span class=&quot;unit&quot;&gt;&#x53F0;&lt;/span&gt;
+                        &lt;a href=&quot;#&quot; class=&quot;add_goods&quot; title=&quot;&#x52A0;&#x5165;&#x8D2D;&#x7269;&#x8F66;&quot;&gt;&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+
+                &lt;li&gt;
+                    &lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/goods/goods007.jpg&quot;&gt;&lt;/a&gt;
+                    &lt;h4&gt;&lt;a href=&quot;#&quot;&gt;&#x6025;&#x901F;&#x8DEF;&#x7531;&lt;/a&gt;&lt;/h4&gt;
+                    &lt;div class=&quot;operate&quot;&gt;
+                        &lt;span class=&quot;prize&quot;&gt;&#xFFE5;64.5&lt;/span&gt;
+                        &lt;span class=&quot;unit&quot;&gt;6.45/500g&lt;/span&gt;
+                        &lt;a href=&quot;#&quot; class=&quot;add_goods&quot; title=&quot;&#x52A0;&#x5165;&#x8D2D;&#x7269;&#x8F66;&quot;&gt;&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+            &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;footer&quot;&gt;
+        &lt;div class=&quot;foot_link&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;&#x5173;&#x4E8E;&#x6211;&#x4EEC;&lt;/a&gt;
+            &lt;span&gt;|&lt;/span&gt;
+            &lt;a href=&quot;#&quot;&gt;&#x8054;&#x7CFB;&#x6211;&#x4EEC;&lt;/a&gt;
+            &lt;span&gt;|&lt;/span&gt;
+            &lt;a href=&quot;#&quot;&gt;&#x62DB;&#x8058;&#x4EBA;&#x624D;&lt;/a&gt;
+            &lt;span&gt;|&lt;/span&gt;
+            &lt;a href=&quot;#&quot;&gt;&#x53CB;&#x60C5;&#x94FE;&#x63A5;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p&gt;CopyRight &#xA9; 2016 &#x5317;&#x4EAC;&#x7F8E;&#x591A;&#x5546;&#x4E1A;&#x80A1;&#x4EFD;&#x6709;&#x9650;&#x516C;&#x53F8; All Rights Reserved&lt;/p&gt;
+        &lt;p&gt;&#x7535;&#x8BDD;&#xFF1A;010-****888    &#x4EAC;ICP&#x5907;*******8&#x53F7;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/user_center_info.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>&#x5728;js&#x76EE;&#x5F55;&#x4E2D;&#x65B0;&#x5EFA;user_center_info.js</p>
+<pre><code>var vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {
+        host,
+        user_id: sessionStorage.user_id || localStorage.user_id,
+        token: sessionStorage.token || localStorage.token,
+        username: &apos;&apos;,
+        mobile: &apos;&apos;,
+        email: &apos;&apos;,
+        email_active: false,
+        set_email: false,
+        send_email_btn_disabled: false,
+        send_email_tip: &apos;&#x91CD;&#x65B0;&#x53D1;&#x9001;&#x9A8C;&#x8BC1;&#x90AE;&#x4EF6;&apos;,
+        email_error: false,
+    },
+    mounted: function(){
+        // &#x5224;&#x65AD;&#x7528;&#x6237;&#x7684;&#x767B;&#x5F55;&#x72B6;&#x6001;
+        if (this.user_id &amp;&amp; this.token) {
+            axios.get(this.host + &apos;/users/infos/&apos;, {
+                    // &#x5411;&#x540E;&#x7AEF;&#x4F20;&#x9012;JWT token&#x7684;&#x65B9;&#x6CD5;
+                    headers: {
+                        &apos;Authorization&apos;: &apos;JWT &apos; + this.token
+                    },
+                    responseType: &apos;json&apos;,
+                })
+                .then(response =&gt; {
+                    // &#x52A0;&#x8F7D;&#x7528;&#x6237;&#x6570;&#x636E;
+                    this.user_id = response.data.id;
+                    this.username = response.data.username;
+                    this.mobile = response.data.mobile;
+                    this.email = response.data.email;
+                    this.email_active = response.data.email_active;
+                })
+                .catch(error =&gt; {
+                    if (error.response.status==401 || error.response.status==403) {
+                        location.href = &apos;/login.html?next=/user_center_info.html&apos;;
+                    }
+                });
+        } else {
+            location.href = &apos;/login.html?next=/user_center_info.html&apos;;
+        }
+    },
+    methods: {
+        // &#x9000;&#x51FA;
+        logout: function(){
+            sessionStorage.clear();
+            localStorage.clear();
+            location.href = &apos;/login.html&apos;;
+        },
+        // &#x4FDD;&#x5B58;email
+        save_email: function(){
+
+        }
+    }
+});
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../02-users/qq/three.html" class="navigation navigation-prev " aria-label="Previous page: 第三步"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../02-users/mail.html" class="navigation navigation-next " aria-label="Next page: 邮件验证"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/fontsettings.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"fontsettings":{"family":"sans","size":2,"theme":"white"},"toggle-chapters":{},"splitter":{},"emphasize":{},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book django项目 -->
+</html>

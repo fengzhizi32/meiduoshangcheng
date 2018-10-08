@@ -1,12 +1,13 @@
 from django.http import HttpResponse, request
 from django.shortcuts import render
+from rest_framework.response import Response
 from rest_framework.views import APIView
 from libs.captcha.captcha import captcha
 from django_redis import get_redis_connection
 from . serializers import RegisterSmsCodeSerializer
+from random import randint
+from libs.yuntongxun.sms import CCP
 # Create your views here.
-
-
 
 # 图片验证码
 class RegisterImageCodeView(APIView):
@@ -61,3 +62,12 @@ class RegisterSmsCodeView(APIView):
         serializer = RegisterSmsCodeSerializer(data=query_params)
         # 验证
         serializer.is_valid(raise_exception=True)
+        # 生成短信
+        sms_code = '%06d'% randint(0,999999)
+        # 记录
+        redis_conn = get_redis_connection('code')
+        redis_conn.setex('sms_%s'% mobile, 5*60, sms_code)
+        # 发送
+        ccp = CCP()
+        ccp.send_template_sms(mobile, [sms_code, 5], 1)
+        return Response({'massage': 'ok'})
