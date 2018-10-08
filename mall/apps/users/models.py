@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
+# 就是使用django自带的用户模型
 class User(AbstractUser):
 
     mobile = models.CharField(max_length=11, unique=True, verbose_name='手机号')

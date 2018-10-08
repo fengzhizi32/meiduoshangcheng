@@ -152,7 +152,14 @@ CACHES = {
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
-    }
+    },
+    "code": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"
@@ -204,10 +211,12 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
 }
 
+# 我们现在要给django指定User模型类,要设置AUTH_USER_MODEL
+# 值:必须瞒住:子应用.模型类    注意只能有一个.
 # 因为现在我们的用户系统是采用系统的模型类
 # 因为继承了系统的模型类,所以我们可以采用系统提供的认证机制
 # 我们需要通过 AUTH_USER_MODEL 这个设置去告诉系统我们的用户模型类是哪一个
 # AUTH_USER_MODEL  = '子应用名.用户模型类'
-# 注意事项:只能有一个
+# 注意事项:只能有一个点: .
 AUTH_USER_MODEL = 'users.User'
 

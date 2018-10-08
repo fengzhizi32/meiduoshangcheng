@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script type="text/javascript" src="js/vue-2.5.16.js"></script>
+	<script type="text/javascript" src="js/axios-0.18.0.min.js"></script>
+
 </head>
 <body>
 	<div class="register_con">
@@ -41,7 +43,7 @@
 					<li>
 						<label>手机号:</label>
 						<input type="text" name="phone" v-model="mobile" @blur="check_phone"  id="phone">
-						<span v-show="error_phone" class="error_tip">您输入的手机号格式不正确</span>
+						<span v-show="error_phone" class="error_tip">{{ error_phone_message }}</span>
 					</li>
 					<li>
 						<label>图形验证码:</label>
