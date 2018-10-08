@@ -17,8 +17,32 @@ var vm = new Vue({
 		sms_code: '',
 		allow: false,
 		error_phone_message:'您输入的手机号格式不正确',
+		image_code_id: '',  // 图片验证码编号
+		image_code_url: '',  // 验证码图片路径
 	},
 	methods: {
+		// 生成uuid
+		generate_uuid: function(){
+			var d = new Date().getTime();
+			if(window.performance && typeof window.performance.now === "function"){
+				d += performance.now(); //use high-precision timer if available
+			}
+			var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+				var r = (d + Math.random()*16)%16 | 0;
+				d = Math.floor(d/16);
+				return (c =='x' ? r : (r&0x3|0x8)).toString(16);
+			});
+			return uuid;
+		},
+		// 生成一个图片验证码的编号，并设置页面中图片验证码img标签的src属性
+		generate_image_code: function(){
+			// 生成一个编号
+			// 严格一点的使用uuid保证编号唯一， 不是很严谨的情况下，也可以使用时间戳
+			this.image_code_id = this.generate_uuid();
+
+			// 设置页面中图片验证码img标签的src属性
+			this.image_code_url = 'http://127.0.0.1:8000' + "/verifications/imagecodes/" + this.image_code_id + "/";
+		},
 		check_username: function (){
 			var len = this.username.length;
 			if(len<5||len>20) {
@@ -98,5 +122,8 @@ var vm = new Vue({
 			this.check_sms_code();
 			this.check_allow();
 		}
-	}
+	},
+	mounted: function() {
+    this.generate_image_code();
+	},
 });

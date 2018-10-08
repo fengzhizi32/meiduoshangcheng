@@ -48,8 +48,8 @@
 					<li>
 						<label>图形验证码:</label>
 						<input type="text" v-model="image_code" @blur="check_image_code" name="pic_code" id="pic_code" class="msg_input">
-						<img src="images/pic_code.jpg" alt="图形验证码" class="pic_code">
-						<span v-show="error_image_code" class="error_tip">请填写图片验证码</span>
+						<img :src="image_code_url" @click="generate_image_code" alt="图形验证码" class="pic_code">
+						<span v-show="error_image_code" class="error_tip">{{error_image_code_message }}</span>
 					</li>
 					<li>
 						<label>短信验证码:</label>
