@@ -53,6 +53,7 @@ class RegisterSmsCodeView(APIView):
 
         # 1.获取参数
         query_params = request.query_params
+
         # 2.校验参数
         # text = query_params.get('text')
         # image_code_id = query_params.get('image_code_id')
@@ -60,14 +61,23 @@ class RegisterSmsCodeView(APIView):
 
         # 创建一个序列化器
         serializer = RegisterSmsCodeSerializer(data=query_params)
+
         # 验证
         serializer.is_valid(raise_exception=True)
-        # 生成短信
-        sms_code = '%06d'% randint(0,999999)
-        # 记录
+
+        # 2.生成短信
+        sms_code = '%06d'% randint(0, 999999)
+
+        # 3.保存记录到redis
         redis_conn = get_redis_connection('code')
         redis_conn.setex('sms_%s'% mobile, 5*60, sms_code)
+
         # 发送
-        ccp = CCP()
-        ccp.send_template_sms(mobile, [sms_code, 5], 1)
+        # ccp = CCP()
+        # ccp.send_template_sms(mobile, [sms_code, 5], 1)
+        from celery_tasks.sms.tasks import send_sms_code
+        # 我们的函数必须采用 函数名.delay()
+        # 参数就放到 delay()中
+        send_sms_code.delay(mobile, sms_code)
+
         return Response({'massage': 'ok'})

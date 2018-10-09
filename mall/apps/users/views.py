@@ -12,7 +12,7 @@ from .models import User
 # Create your views here.
 
 # 判断用户名是否注册过
-class ReigsterUserNameView(APIView):
+class RegisterUserNameView(APIView):
     """判断用户名是否注册过
     1.前端用get方式把用户名传递过来
     2.后端接口设计
@@ -35,7 +35,7 @@ class ReigsterUserNameView(APIView):
         return Response(context)
 
 # 判断手机号是否注册过
-class ReigsterMoblieView(APIView):
+class RegisterMoblieView(APIView):
     """
     判断手机号是否注册
     GET     /users/phones/(?P<mobile>1[345789]\d{9})/count/
@@ -50,3 +50,16 @@ class ReigsterMoblieView(APIView):
         }
         # 返回响应
         return Response(context)
+
+# 判断
+class RegisterCreateUserView(APIView):
+    """
+    1.我们需要前端把:用户名,密码1,密码2,手机号,短信验证码,是否
+    """
+
+
+    def post(self, request):
+
+        data = request.data
+
+        username = data.get('username')

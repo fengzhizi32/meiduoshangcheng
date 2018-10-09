@@ -25,7 +25,7 @@ class RegisterSmsCodeSerializer(serializers.Serializer):
         # 2.获取redis的验证码
         redis_conn = get_redis_connection('code')
         redis_text = redis_conn.get('img_%s'% image_code_id)
-        # 2.1 判断是否存在
+        # 2.1 判断是否存在于有效期
         if redis_text is None:
             raise serializers.ValidationError('验证码已过期')
         # 2.2 删除
