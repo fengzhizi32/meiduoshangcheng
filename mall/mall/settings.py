@@ -25,7 +25,8 @@ SECRET_KEY = 'g_l0@7=ct_w&6mhn-5^gq-=vo&bqi8qkdp57(yxlqkcfe(0uzs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# 允许访问, '*' 所有
+ALLOWED_HOSTS = ['*']
 
 # 因为我们把子应用全部放到了 apps的子文件夹中,所以我们需要告知系统
 # 去哪里找子应用
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
     'areas.apps.AreasConfig',
     'cart.apps.CartConfig',
     'contents.apps.ContentsConfig',
@@ -50,10 +53,12 @@ INSTALLED_APPS = [
     'pay.apps.PayConfig',
     'users.apps.UsersConfig',
     'verifications.apps.VerificationsConfig',
-    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
+    # 必须放在最上边
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -219,4 +224,13 @@ REST_FRAMEWORK = {
 # AUTH_USER_MODEL  = '子应用名.用户模型类'
 # 注意事项:只能有一个点: .
 AUTH_USER_MODEL = 'users.User'
+
+# 白名单就是允许哪些域名进行跨域访问
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    '127.0.0.1:8080',
+    'localhost:8080',
+    'www.meiduo.site:8080'
+)
+CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
