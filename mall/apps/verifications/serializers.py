@@ -36,3 +36,19 @@ class RegisterSmsCodeSerializer(serializers.Serializer):
         if redis_text.decode().lower() != text.lower():
             raise serializers.ValidationError('输入不一致')
         return attrs
+
+    # 因为我们在序列化器中 添加了3个字段
+    # 这3个字段是不应该入库的
+
+    # 重写 create 方法
+    def create(self, validated_data):
+
+        del validated_data['password2']
+        del validated_data['allow']
+        del validated_data['sms_code']
+
+        # 重新入库
+        user = super().create(validated_data)
+
+
+        return user
