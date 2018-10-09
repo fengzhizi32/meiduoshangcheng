@@ -2,12 +2,15 @@ from django.shortcuts import render
 from django.views import View
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from .models import User
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import CreateAPIView
+from .serializers import CreateUserSerializer
+
 # 导入:因为我们已经告知系统 子应用从app里去查找,所以就不用设置app.
 # from apps.users.models import User    #错误的方式
 # from users.models import User
-from .models import User
 
 # Create your views here.
 
@@ -51,12 +54,18 @@ class RegisterMoblieView(APIView):
         # 返回响应
         return Response(context)
 
-# 判断
-class RegisterCreateUserView(APIView):
-    """
-    1.我们需要前端把:用户名,密码1,密码2,手机号,短信验证码,是否
+# 实现注册功能    数据入库(使用  CreateAPIView里的POST方法)
+class RegisterCreateUserView(CreateAPIView):
+    """实现注册功能
+
+    POST
+
+    1.我们需要前端把:用户名,密码1,密码2,手机号,短信验证码,是否同意,提交给后台
+    2.对数据进行校验
+    3.数据入库
     """
 
+    serializer_class = CreateUserSerializer
 
     def post(self, request):
 
