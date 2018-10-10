@@ -64,7 +64,6 @@ class RegisterCreateUserView(APIView):
     2.对数据进行校验
     3.数据入库
     """
-
     serializer_class = RegisterCreateUserSerializer
 
     def post(self, request):
@@ -83,3 +82,5 @@ class RegisterCreateUserView(APIView):
 
         # 4.返回响应
         return Response(serializer.data)
+
+

@@ -209,7 +209,7 @@ var vm = new Vue({
                         allow: this.allow.toString(),
 					},
 					{responseType: 'json'},
-				)
+					)
                     .then(response => {
                         // 保存后端返回的token数据
                         localStorage.token = response.data.token;
