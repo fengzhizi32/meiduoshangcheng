@@ -25,7 +25,7 @@ SECRET_KEY = 'g_l0@7=ct_w&6mhn-5^gq-=vo&bqi8qkdp57(yxlqkcfe(0uzs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# 允许访问, '*' 所有
+# 允许访问主机: '*' 所有
 ALLOWED_HOSTS = ['*']
 
 # 因为我们把子应用全部放到了 apps的子文件夹中,所以我们需要告知系统
@@ -214,6 +214,18 @@ LOGGING = {
 REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'utils.exceptions.exception_handler',
+    # 认证
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+import datetime
+# 设置 token 的有效期
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
 }
 
 # 我们现在要给django指定User模型类,要设置AUTH_USER_MODEL
@@ -234,3 +246,8 @@ CORS_ORIGIN_WHITELIST = (
 )
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
+# JWT
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.users.jwt_response_payload_handler',
+}
