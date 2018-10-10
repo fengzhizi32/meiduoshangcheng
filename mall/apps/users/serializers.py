@@ -1,6 +1,5 @@
 # coding:utf8
 import re
-
 from django_redis import get_redis_connection
 from rest_framework import serializers
 from .models import User
@@ -47,40 +46,61 @@ class RegisterCreateUserSerializer(serializers.ModelSerializer):
         }
 
 
-        # 进行校验
+    # 进行校验
         # 单个字段的校验有 手机号码,是否同意协议
-        def validate_mobile(self, value):
-            if not re.match(r'1[345789]\d{9}', value):
-                raise serializers.ValidationError('手机号格式不正确')
-            return value
+    def validate_mobile(self, value):
+        if not re.match(r'1[345789]\d{9}', value):
+            raise serializers.ValidationError('手机号格式不正确')
+        return value
 
-        def validate_allow(self, value):
-            # 注意,前段提交的是否同意,我们已经转换为字符串
-            if value != 'true':
-                raise serializers.ValidationError('您未同意协议')
-            return value
+    def validate_allow(self, value):
+        # 注意,前段提交的是否同意,我们已经转换为字符串
+        if value != 'true':
+            raise serializers.ValidationError('您未同意协议')
+        return value
 
-        # 多字段校验, 密码是否一致, 短信是否一致
-        def validate(self, attrs):
+    # 多字段校验, 密码是否一致, 短信是否一致
+    def validate(self, attrs):
 
-            # 比较密码
-            password = attrs['password']
-            password2 = attrs['password2']
+        # 比较密码
+        password = attrs['password']
+        password2 = attrs['password2']
 
-            if password != password2:
-                raise serializers.ValidationError('密码不一致')
-            # 比较手机验证码
-            # 获取用户提交的验证码
-            code = attrs['sms_code']
-            # 获取redis中的验证码
-            redis_conn = get_redis_connection('code')
-            # 获取手机号码
-            mobile = attrs['mobile']
-            redis_code = redis_conn.get('sms_%s' % mobile)
-            if redis_code is None:
-                raise serializers.ValidationError('验证码过期')
+        if password != password2:
+            raise serializers.ValidationError('密码不一致')
+        # 比较手机验证码
+        # 获取用户提交的验证码
+        code = attrs['sms_code']
+        # 获取redis中的验证码
+        redis_conn = get_redis_connection('code')
+        # 获取手机号码
+        # mobile = attrs['mobile']
+        # redis_code = redis_conn.get('sms_%s' % mobile)
+        redis_code = redis_conn.get('sms_%s' % attrs.get('mobile'))
+        if redis_code is None:
+            raise serializers.ValidationError('验证码过期')
 
-            if redis_code.decode() != code:
-                raise serializers.ValidationError('验证码不正确')
+        if redis_code.decode() != code:
+            raise serializers.ValidationError('验证码不正确')
 
-            return attrs
+        return attrs
+
+
+    # 问题的根源是 我们在进行 save 的时候
+    # User.objects.create(**validate_data)
+    # validated_data 多了字段
+
+    def create(self, validated_data):
+
+        del validated_data['allow']
+        del validated_data['password2']
+        del validated_data['sms_code']
+
+        user = super().create(validated_data)
+
+
+        # 将密码的明文加密
+        # user.set_password(validated_data['password'])
+        user.save()
+
+        return user

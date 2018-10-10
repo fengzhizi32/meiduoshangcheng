@@ -55,7 +55,7 @@ class RegisterMoblieView(APIView):
         return Response(context)
 
 # 实现注册功能    数据入库(使用  CreateAPIView里的POST方法)
-class RegisterCreateUserView(CreateAPIView):
+class RegisterCreateUserView(APIView):
     """实现注册功能
 
     POST
@@ -69,6 +69,17 @@ class RegisterCreateUserView(CreateAPIView):
 
     def post(self, request):
 
+        # 1.接收参数
         data = request.data
 
-        username = data.get('username')
+        # 2.创建序列化器
+        serializer = RegisterCreateUserSerializer(data=data)
+
+        # 校验
+        serializer.is_valid(raise_exception=True)
+
+        # 3.入库
+        serializer.save()
+
+        # 4.返回响应
+        return Response(serializer.data)
