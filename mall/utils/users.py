@@ -17,7 +17,7 @@ def get_user_by_account(account):
 
     try:
         # 如果用户输入是手机号的正则
-        if re.match(r'1[345789]\d{9}',account):
+        if re.match(r'1[345789]\d{9}', account):
             # 执行手机号登陆
             user = User.objects.get(mobile=account)
         else:
@@ -42,4 +42,36 @@ class UsernameMobileAuthBackend(ModelBackend):
         if user is not None and user.check_password(password):
             return user
         else:
+            return None
+
+
+
+
+# from django.conf import settings
+# from django.contrib.auth.hashers import check_password
+# from django.contrib.auth.models import User
+
+# 继承自object
+class SettingsBackend(object):
+    """
+    Authenticate against the settings ADMIN_LOGIN and ADMIN_PASSWORD.
+
+    Use the login name and a hash of the password. For example:
+
+    ADMIN_LOGIN = 'admin'
+    ADMIN_PASSWORD = 'pbkdf2_sha256$30000$Vo0VlMnkR4Bk$qEvtdyZRWTcOsCnI/oQ7fVOu1XAURIZYoOZ3iq8Dr4M='
+    """
+
+    def authenticate(self, request, username=None, password=None):
+
+        user = get_user_by_account(username)
+
+        if user is not None and user.check_password(password):
+            return user
+        return None
+
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
             return None

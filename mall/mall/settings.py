@@ -253,6 +253,10 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.users.jwt_response_payload_handler',
 }
 
+# AUTHENTICATION_BACKENDS = [
+#    'utils.users.UsernameMobileAuthBackend',
+# ]
+
 AUTHENTICATION_BACKENDS = [
-   'utils.users.UsernameMobileAuthBackend',
+   'utils.users.SettingsBackend',
 ]
