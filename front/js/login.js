@@ -13,6 +13,7 @@ var vm = new Vue({
         remember: false
     },
     methods: {
+
         // 获取url路径参数
         get_query_string: function(name){
             var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
@@ -22,6 +23,7 @@ var vm = new Vue({
             }
             return null;
         },
+
         // 检查数据
         check_username: function(){
             if (!this.username) {
@@ -30,6 +32,7 @@ var vm = new Vue({
                 this.error_username = false;
             }
         },
+
         check_pwd: function(){
             if (!this.password) {
                 this.error_pwd_message = '请填写密码';
@@ -38,6 +41,7 @@ var vm = new Vue({
                 this.error_pwd = false;
             }
         },
+
         // 表单提交
         on_submit: function(){
             this.check_username();
@@ -79,5 +83,20 @@ var vm = new Vue({
                     })
             }
         },
+
+        // qq登录
+        qq_login: function(){
+            var state = this.get_query_string('next') || '/';
+            axios.get(this.host + '/oauth/qq/statues/?state=' + state, {
+                    responseType: 'json'
+                })
+                .then(response => {
+                    location.href = response.data.auth_url;
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                })
+        }
+
     }
 });

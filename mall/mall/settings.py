@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -42,8 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 安装框架
     'rest_framework',
+
+    # 安装 cors
     'corsheaders',
+    #
+    # # 安装应用
     'areas.apps.AreasConfig',
     'cart.apps.CartConfig',
     'contents.apps.ContentsConfig',
@@ -55,6 +60,7 @@ INSTALLED_APPS = [
     'verifications.apps.VerificationsConfig',
 
 ]
+
 
 MIDDLEWARE = [
     # 必须放在最上边
@@ -102,7 +108,6 @@ DATABASES = {
         'NAME': 'meiduoshangcheng'  # 数据库名字
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -222,12 +227,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-import datetime
-# 设置 token 的有效期
-JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
-}
-
 # 我们现在要给django指定User模型类,要设置AUTH_USER_MODEL
 # 值:必须瞒住:子应用.模型类    注意只能有一个.
 # 因为现在我们的用户系统是采用系统的模型类
@@ -247,9 +246,9 @@ CORS_ORIGIN_WHITELIST = (
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
 # JWT
-# 设置token的有效期
+import datetime
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),  # 设置token的有效期
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'utils.users.jwt_response_payload_handler',
 }
 
@@ -260,3 +259,9 @@ JWT_AUTH = {
 AUTHENTICATION_BACKENDS = [
    'utils.users.SettingsBackend',
 ]
+
+# QQ登录参数
+QQ_APP_ID = '101474184'
+QQ_APP_KEY = 'c6ce949e04e12ecc909ae6a8b09b637c'
+QQ_REDIRECT_URL = 'http://www.meiduo.site:8080/oauth_callback.html'
+

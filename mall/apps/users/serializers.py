@@ -17,8 +17,8 @@ class RegisterCreateUserSerializer(serializers.ModelSerializer):
 
     password2 = serializers.CharField(label='校验密码',allow_null=False,allow_blank=False,write_only=True)
 
-    sms_code = serializers.CharField(label='短信验证码', max_length=6, min_length=6, allow_null=False, allow_blank=False,
-                                     write_only=True)
+    sms_code = serializers.CharField(label='短信验证码', max_length=6, min_length=6, allow_null=False, allow_blank=False, write_only=True)
+
     allow = serializers.CharField(label='是否同意协议', allow_null=False, allow_blank=False, write_only=True)
 
     token = serializers.CharField(label='登陆状态token', read_only=True)
@@ -106,12 +106,15 @@ class RegisterCreateUserSerializer(serializers.ModelSerializer):
         user.save()
 
 
-        # 我们需要在这里 生成一个登陆的token
+        # 我们需要在这里 生成一个登陆的token  以下代码坑点多,直接复制就好
         from rest_framework_jwt.settings import api_settings
 
         # 获取两个方法
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
         jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+        # jwt_payload_handler 的调用原理就是将user对象给jwt, jwt会自动的获取指定的数据
+
+
 
         # 调用
         data = jwt_payload_handler(user)

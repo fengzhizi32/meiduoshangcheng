@@ -13,6 +13,11 @@ from .serializers import RegisterCreateUserSerializer
 # from users.models import User
 
 # Create your views here.
+"""
+APIView                 基类
+GenericAPIView          列表,详情 做了通用支持,queryset, serializer_class
+ListAPIView             queryset, serializer_class  http的方法都可以不写
+"""
 
 # 判断用户名是否注册过
 class RegisterUserNameView(APIView):
