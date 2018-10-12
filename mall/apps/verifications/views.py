@@ -2,6 +2,8 @@ from django.http import HttpResponse, request
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from apps.verifications.constants import SMS_CODE_EXPIRE
 from libs.captcha.captcha import captcha
 from django_redis import get_redis_connection
 from . serializers import RegisterSmsCodeSerializer
@@ -70,7 +72,7 @@ class RegisterSmsCodeView(APIView):
 
         # 3.保存记录到redis
         redis_conn = get_redis_connection('code')
-        redis_conn.setex('sms_%s'% mobile, 5*60, sms_code)
+        redis_conn.setex('sms_%s'% mobile, SMS_CODE_EXPIRE, sms_code)
 
         # 发送
         # ccp = CCP()

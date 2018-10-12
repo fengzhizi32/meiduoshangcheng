@@ -47,8 +47,8 @@ INSTALLED_APPS = [
 
     # 安装 cors
     'corsheaders',
-    #
-    # # 安装应用
+
+    # 安装应用
     'areas.apps.AreasConfig',
     'cart.apps.CartConfig',
     'contents.apps.ContentsConfig',

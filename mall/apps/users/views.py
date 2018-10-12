@@ -69,6 +69,7 @@ class RegisterCreateUserView(APIView):
     2.对数据进行校验
     3.数据入库
     """
+
     serializer_class = RegisterCreateUserSerializer
 
     def post(self, request):
