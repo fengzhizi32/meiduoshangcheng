@@ -82,3 +82,49 @@ class QQ_TokenView(APIView):
 
 
         # return response
+
+
+        # 我们需要根据 openid 来进行判断
+        # 如果 openid 存在于数据库中, 直接返回登陆的 token
+        # 如果数据库中没有 openid ,说明用户是第一次绑定,需要跳转到 绑定页面
+        try:
+            qq_user = OauthQQUser.objects.get(openid = openid)
+        except OauthQQUser.DoesNotExist:
+            # 说明是第一次绑定,则跳转到  绑定页面
+            # 需要把 openid 应该作为一个参数 传递过去
+            # return Response({'openid': openid})
+            # 因为 openid 非常重要,所有以需要对openid进行处理
+            access_token = OauthQQUser.generate_save_user_token(openid)
+            return Response({'access_token': access_token})
+        else:
+            # 如果openid已经在数据库中,说明已经绑定过了,直接返回登陆的token
+
+            pass
+        pass
+
+
+
+
+
+
+# from itsdangerous import TimedJSONWebSignatureSerializer as S
+# # s = S(scret_key = second)
+# # scret_key 加密的字符串
+# # second 加密的时效
+# # 序列化器的初始化
+# s = S('日寒月暖煎人寿', 3600)
+#
+# # 我们可以将 一些敏感的数据 传递给序列化器,序列化器经过一定的算法之后,会生成一个字符串
+# dict = {
+#     'openid': '123456789'
+# }
+# data = s.dumps(dict)
+# data
+#
+# # 数据验证
+# # b
+# # 'eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzOTMyMzUxMiwiZXhwIjoxNTM5MzI3MTEyfQ
+# # .eyJvcGVuaWQiOiIxMjM0NTY3ODkifQ
+# # .e3ALSGzdMct0lW0ijfcJ2IKG0CcpINHdk5eadqD60Ck'
+# s.loads('eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzOTMyMzUxMiwiZXhwIjoxNTM5MzI3MTEyfQ.eyJvcGVuaWQiOiIxMjM0NTY3ODkifQ.e3ALSGzdMct0lW0ijfcJ2IKG0CcpINHdk5eadqD60Ck'
+# )

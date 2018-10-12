@@ -16,6 +16,8 @@ class OauthQQUser(BaseModel):
 
     @staticmethod
     def generate_save_user_token(openid):
+
+        # 实例化序列器
         serializer = Serializer(settings.SECRET_KEY, expires_in=3600)
 
         token = serializer.dumps({'openid': openid})

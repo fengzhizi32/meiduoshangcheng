@@ -34,7 +34,7 @@ var vm = new Vue({
             responseType: 'json',
         })
             .then(response => {
-                if (response.data.user_id) {
+                if (response.data.user_id){
                     // 用户已绑定
                     sessionStorage.clear();
                     localStorage.clear();
