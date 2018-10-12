@@ -80,7 +80,6 @@ class QQ_TokenView(APIView):
         except Exception :
             return Response({'message': '服务异常'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
-
         # return response
 
 
@@ -100,10 +99,18 @@ class QQ_TokenView(APIView):
             # 如果openid已经在数据库中,说明已经绑定过了,直接返回登陆的token
 
             pass
+
+    def post(self, request):
+        """
+        绑定用户时:
+        1.将用户的手机号,密码,短信验证码以及 sccess_token(openid) 提交给后台
+        2.对手机号, access_token 进行校验
+        3.将用户信息和 openid 进行绑定处理
+        """
+
+
+
         pass
-
-
-
 
 
 

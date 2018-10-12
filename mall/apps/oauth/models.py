@@ -1,5 +1,7 @@
 from django.db import models
-from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, BadData
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer, SignatureExpired, BadSignature
+
+from .constants import EXPIRE
 from mall import settings
 from utils.models import BaseModel
 
@@ -14,7 +16,8 @@ class OauthQQUser(BaseModel):
         verbose_name = 'QQ登录用户数据'
         verbose_name_plural = verbose_name
 
-    @staticmethod
+    # @staticmethod
+    @classmethod
     def generate_save_user_token(openid):
 
         # 实例化序列器
@@ -24,12 +27,17 @@ class OauthQQUser(BaseModel):
 
         return token.decode()
 
-    @staticmethod
+    # @staticmethod
+    @classmethod
     def check_save_user_token(token):
-        serializer = Serializer(settings.SECRET_KEY, 3600)
+
+        # 实例化序列器
+        serializer = Serializer(settings.SECRET_KEY, EXPIRE)
+
+        # 校验 (过期,数据错误)
         try:
             result = serializer.loads(token)
-        except BadData:
+        except BadSignature:
             return None
 
         return result.get('openid')
