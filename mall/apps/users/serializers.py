@@ -149,5 +149,15 @@ class EmailSerializer(serializers.ModelSerializer):
             'email': {
                 'require': True
             }
-
         }
+
+    def update(self, instance, validated_data):
+
+        # instance    -->     实例对象 user
+        # validated     -->     验证之后的数据
+        instance.email = validated_data.get('email')
+        instance.save()
+
+        # 这里保存完之后,    发送激活邮件
+
+        return instance
