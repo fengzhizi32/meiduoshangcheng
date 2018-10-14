@@ -92,34 +92,62 @@ class RegisterCreateUserView(APIView):
 
 
 # 用户中心个人信息
+""" APIView 方法 """
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
-class UserCenterInfoView(APIView):
-    """
-    获取登录用户的信息
-    GET /users/infos/
-    既然是登录用户,我们就要用到权限管理
-    在类视图对象中也保存了请求对象request
-    request对象的user属性是通过认证检验之后的请求用户对象
-    """
+# class UserCenterInfoView(APIView):
+#     """
+#     获取登录用户的信息
+#     GET /users/infos/
+#     既然是登录用户,我们就要用到权限管理
+#     在类视图对象中也保存了请求对象request
+#     request对象的user属性是通过认证检验之后的请求用户对象
+#     """
+#
+#     # 指定的视图中    设置权限
+#     # IsAuthenticated  登陆用户(认证用户)
+#     permission_classes = [IsAuthenticated]
+#
+#     def get(self, request):
+#
+#         # 1.获取用户信息
+#         # 我们采用的是 jwt token 认证,只要前端传递的token是正确的, 就可以确认
+#         # 登录用户 保存在request.user中
+#         user = request.user
+#
+#         # 2.创建序列化器
+#         serializer = UserCenterInfoSerializer(user)
+#
+#         # 3.返回响应
+#         return Response(serializer.data)
 
-    # 指定的视图中    设置权限
-    # IsAuthenticated  登陆用户(认证用户)
-    permission_classes = [IsAuthenticated]
+""" GenericAPIView 方法 """
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import RetrieveModelMixin
+# class UserCenterInfoView(RetrieveModelMixin, GenericAPIView):
+#
+#     # 设置序列化器
+#     serializer_class = UserCenterInfoSerializer
+#
+#     # 默认如果是根据 pk 来获取数据的时候   需要设置    这个属性
+#     # queryset = User.objects.all()
+#
+#     def get_object(self):
+#
+#         return self.request.user
+#
+#     def get(self, request):
+#
+#         return self.retrieve(request)
 
-    def get(self, request):
+""" RetrieveAPIView 方法 """
+from rest_framework.generics import RetrieveAPIView
+class UserCenterInfoView(RetrieveAPIView):
 
-        # 1.获取用户信息
-        # 我们采用的是 jwt token 认证,只要前端传递的token是正确的, 就可以确认
-        # 登录用户 保存在request.user中
-        user = request.user
+    serializer_class = UserCenterInfoSerializer
 
-        # 2.创建序列化器
-        serializer = UserCenterInfoSerializer(user)
+    def get_object(self):
 
-        # 3.返回响应
-        return Response(serializer.data)
-
-
+        return self.request.user
 
 
 
