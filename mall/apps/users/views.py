@@ -7,7 +7,7 @@ from .models import User
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.generics import CreateAPIView
-from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer
+from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer, EmailSerializer
 
 # 导入:因为我们已经告知系统 子应用从app里去查找,所以就不用设置app.
 # from apps.users.models import User    #错误的方式
@@ -148,6 +148,55 @@ class UserCenterInfoView(RetrieveAPIView):
     def get_object(self):
 
         return self.request.user
+
+# 邮箱验证
+""" APIView """
+# class UserEmailView(APIView):
+#     """
+#     必须用户登录才可以设置
+#     1.当用户输入邮箱内容 点击保存的时候, 前端发送请求给后端
+#     2.后端接收到数据之后, 更新数据库
+#     3.给邮箱发送一条激活邮件
+#     4.返回响应
+#
+#     PUT     /users/emails/
+#     """
+#
+#     permission_classes = [IsAuthenticated]
+#
+#     def put(self, request):
+#
+#         # 1.接收数据
+#         data = request.data
+#         user = request.user
+#
+#         # 2.对数据进行校验
+#         serializer = EmailSerializer(instance=user, data=data)
+#         serializer.is_valid(raise_exception=True)
+#
+#         # 3.更新数据
+#         serializer.save()
+#
+#         # 4.发送激活邮件
+#
+#
+#         # 5.返回响应
+#         return Response(serializer.data)
+
+""" UpdateAPIView """
+from rest_framework.generics import UpdateAPIView
+class UserEmialView(UpdateAPIView):
+
+    serializer_class = EmailSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+
+        return self.request.user
+
+
+
 
 
 

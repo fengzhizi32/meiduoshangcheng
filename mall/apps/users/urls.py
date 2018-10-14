@@ -18,6 +18,8 @@ urlpatterns = [
 
     url(r'^infos/$', views.UserCenterInfoView.as_view()),
 
+    url(r'^emails/$', views.UserEmailView.as_view()),
+
     url(r'^$', views.RegisterCreateUserView.as_view()),
 
 

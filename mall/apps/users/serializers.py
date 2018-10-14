@@ -139,5 +139,15 @@ class UserCenterInfoSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'mobile', 'email', 'email_active']
 
+class EmailSerializer(serializers.ModelSerializer):
+    """邮箱序列化器"""
 
+    class Meta:
+        model =User
+        fields = ('id', 'email')
+        extra_kwrgs = {
+            'email': {
+                'require': True
+            }
 
+        }
