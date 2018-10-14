@@ -105,7 +105,7 @@ DATABASES = {
         'PORT': 3306,  # 数据库端口
         'USER': 'root',  # 数据库用户名
         'PASSWORD': 'mysql',  # 数据库用户密码
-        'NAME': 'meiduoshangcheng'  # 数据库名字
+        'NAME': 'meiduo_mall'  # 数据库名字
     }
 }
 
@@ -264,4 +264,4 @@ AUTHENTICATION_BACKENDS = [
 QQ_APP_ID = '101474184'
 QQ_APP_KEY = 'c6ce949e04e12ecc909ae6a8b09b637c'
 QQ_REDIRECT_URL = 'http://www.meiduo.site:8080/oauth_callback.html'
-
+Weixin_REDIRECT_URL = ''

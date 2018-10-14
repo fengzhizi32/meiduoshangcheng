@@ -1,28 +1,20 @@
-import logging
-from urllib.parse import urlencode
-from urllib.request import urlopen
-
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from rest_framework.settings import api_settings
+from rest_framework_jwt.settings import api_settings
 from rest_framework.views import APIView
-
-# from .serializers import QQRegisterSerializer
-from utils.exceptions import logger
+from .serializers import QQ_TokenViewSerializer
 from .utils import OauthQQ
-
-from mall import settings
 from .models import OauthQQUser
-
 # Create your views here.
 
 
 # 实现出现QQ授权登录视图
 class QQ_OauthURLView(APIView):
-    """实现出现QQ授权登录视图"""
-    # GET /oauth/qq/statues/
-
+    """
+    实现出现QQ授权登录视图
+    GET /oauth/qq/statues/
+    """
 
     def get(self, request):
 
@@ -59,23 +51,30 @@ class QQ_OauthURLView(APIView):
         return Response({'auth_url': auth_url})
 
 
+
 # 获取access_token
-class QQ_TokenView(APIView):
-    """获取access_token
+class QQ_TokenView(GenericAPIView):
+    """
+    获取access_token
     GET /oauth/qq/users/?code=xxx
     """
 
+    serializer_class = QQ_TokenViewSerializer
+
     def get(self, request):
 
-        #获取code,并进行判断
+        # 1.获取code,并进行判断
         code = request.query_params.get('code')
+
         if code is None:
             return Response({'message': '缺少参数'}, status=status.HTTP_400_BAD_REQUEST)
 
+        # 2.获取token
         qq = OauthQQ()
+        # 获取外界资源的时候,不知道外界都会发生什么情况,最好前扑捉一下异常
         try:
             # 通过code 换access_token
-            access_token = qq.get_access_token(code)
+            access_token = qq.get_access_token(code=code)
             openid =qq.get_openid(access_token)
         except Exception :
             return Response({'message': '服务异常'}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
@@ -87,18 +86,33 @@ class QQ_TokenView(APIView):
         # 如果 openid 存在于数据库中, 直接返回登陆的 token
         # 如果数据库中没有 openid ,说明用户是第一次绑定,需要跳转到 绑定页面
         try:
-            qq_user = OauthQQUser.objects.get(openid = openid)
+            qq_user = OauthQQUser.objects.get(openid=openid)
         except OauthQQUser.DoesNotExist:
             # 说明是第一次绑定,则跳转到  绑定页面
             # 需要把 openid 应该作为一个参数 传递过去
             # return Response({'openid': openid})
             # 因为 openid 非常重要,所有以需要对openid进行处理
-            access_token = OauthQQUser.generate_save_user_token(openid)
+            access_token = OauthQQUser.generate_open_id_token(openid)
+
             return Response({'access_token': access_token})
         else:
+            user = qq_user.user
+            print()
             # 如果openid已经在数据库中,说明已经绑定过了,直接返回登陆的token
+            jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+            jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-            pass
+            payload = jwt_payload_handler(user)
+            token = jwt_encode_handler(payload)
+
+            response = Response({
+                'token': token,
+                'user_id': user.id,
+                'username': user.username,
+            })
+
+            return response
+
 
     def post(self, request):
         """
@@ -108,9 +122,31 @@ class QQ_TokenView(APIView):
         3.将用户信息和 openid 进行绑定处理
         """
 
+        # 创建序列化器
+        serializer = QQ_TokenViewSerializer(data=request.data)
+        # 进行校验
+        serializer.is_valid(raise_exception=True)
+        # 保存
+        user = serializer.save()
+
+        # 生成已登陆的token
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+        payload = jwt_payload_handler(user)
+        token = jwt_encode_handler(payload)
+
+        response = Response({
+            'token': token,
+            'user_id': user.id,
+            'username': user.username,
+        })
+
+        # 返回登录的token
+        return response
 
 
-        pass
+
 
 
 
@@ -126,6 +162,7 @@ class QQ_TokenView(APIView):
 #     'openid': '123456789'
 # }
 # data = s.dumps(dict)
+# token.decode()
 # data
 #
 # # 数据验证
@@ -133,5 +170,48 @@ class QQ_TokenView(APIView):
 # # 'eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzOTMyMzUxMiwiZXhwIjoxNTM5MzI3MTEyfQ
 # # .eyJvcGVuaWQiOiIxMjM0NTY3ODkifQ
 # # .e3ALSGzdMct0lW0ijfcJ2IKG0CcpINHdk5eadqD60Ck'
+
 # s.loads('eyJhbGciOiJIUzI1NiIsImlhdCI6MTUzOTMyMzUxMiwiZXhwIjoxNTM5MzI3MTEyfQ.eyJvcGVuaWQiOiIxMjM0NTY3ODkifQ.e3ALSGzdMct0lW0ijfcJ2IKG0CcpINHdk5eadqD60Ck'
 # )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 实现出现weixin授权登录视图
+class Weixin_OauthURLView(APIView):
+    """实现出现QQ授权登录视图"""
+
+    # GET /oauth/qweixin/statues/
+
+
+    def get(self, request):
+        state = request.query_params.get('state')
+
+        weixin = OauthQQ()
+
+        auth_url = weixin.get_oauth_url(state)
+
+        # 返回响应
+        return Response({'auth_url': auth_url})
+
+

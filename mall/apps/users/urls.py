@@ -12,13 +12,13 @@ urlpatterns = [
     # /users/phones/(?P<mobile>1[345789]\d{9})/count/
     url(r'^phones/(?P<mobile>1[345789]\d{9})/count/$', views.RegisterMoblieView.as_view()),
 
-    url(r'^$', views.RegisterCreateUserView.as_view()),
-
     # 进行登陆认证,返回token
     #/users/auths/
-    # eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
-    # .eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6InJlbnpoaXFpYW5nIiwiZXhwIjoxNTM5MjQwMzgxLCJlbWFpbCI6IiJ9
-    # .vGYaozvlKy98a2RoBJ9TTY2yeN7vZW-0H8f56ZG_xEk
     url(r'^auths/$', obtain_jwt_token, name='auths'),
+
+    url(r'^infos/$', views.UserCenterInfoView.as_view()),
+
+    url(r'^$', views.RegisterCreateUserView.as_view()),
+
 
 ]

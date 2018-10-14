@@ -3,7 +3,8 @@ import json
 from mall import settings
 from urllib.parse import urlencode,parse_qs
 from urllib.request import urlopen
-
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from django.conf import settings
 
 class OauthQQ(object):
     ##QQ授权工具类
@@ -14,7 +15,7 @@ class OauthQQ(object):
         self.redirect_uri = redirect_uri or settings.QQ_REDIRECT_URL
         self.client_secret = client_secret or settings.QQ_APP_KEY
 
-    # 返回QQ登录网址
+    # 获取Authorization Code
     def get_oauth_url(self, state):
 
         # 生成auth_url
@@ -26,10 +27,10 @@ class OauthQQ(object):
         # state           必须      client端的状态值。用于第三方应用防止CSRF攻击，成功授权后回调时会原样带回。请务必严格按照流程检查用户与state参数状态的绑定。
         # scope           可选      scope=get_user_info
 
-
-
         # 设置base_url,注意添加 ?
         base_url = 'https://graph.qq.com/oauth2.0/authorize?'
+
+        state = '/'
 
         # 组织参数
         params = {
@@ -71,13 +72,13 @@ class OauthQQ(object):
         # urllib.request.urlopen(url, data=None)
         # 发送http请求，如果data为None，发送GET请求，如果data不为None，发送POST请求
         response = urlopen(url)
-        'access_token=5A084A7BEE485649F0CF3001575C1F7D&expires_in=7776000&refresh_token=B70115348CB6EEF1B4F96B75160F29E5'
+        # 'access_token=5A084A7BEE485649F0CF3001575C1F7D&expires_in=7776000&refresh_token=B70115348CB6EEF1B4F96B75160F29E5'
         # 读取数据
         data = response.read().decode()
         print('data: %s'% data)
         query_params = parse_qs(data)
 
-        # 获取token,并进行判断
+        # 获取token,并进行判断'https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=101474184&client_secret=c6ce949e04e12ecc909ae6a8b09b637c&code=2A8084BEBB82E776D64DA487C49F0319&redirect_uri=http%3A%2F%2Fwww.meiduo.site%3A8080%2Foauth_callback.html'
         access_token = query_params.get('access_token')
         # print(access_token)
         # ['5F5893DBC5339A54B26AFD0A1312276F']
@@ -121,3 +122,32 @@ class OauthQQ(object):
         openid = data.get('openid', None)
 
         return openid
+
+
+class Oauth_Weixin(object):
+    """微信授权工具类"""
+
+    def __init__(self, client_id=None, redirect_uri=None, client_secret=None,):
+
+        self.client_id = client_id or settings.QQ_APP_ID
+        self.redirect_uri = redirect_uri or settings.QQ_REDIRECT_URL
+        self.client_secret = client_secret or settings.QQ_APP_KEY
+
+    def get_oauth_url(self, state):
+
+        base_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?'
+
+
+    pass
+
+
+def generic_openid_token(openid):
+
+    s = Serializer(settings.SECRET_KEY, 3600)
+
+    # 对openid进行处理,返回二进制
+    token = s.dumps({'openid': openid})
+
+    openid_token = token.decode()
+
+    return openid_token

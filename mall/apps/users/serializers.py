@@ -132,3 +132,12 @@ class RegisterCreateUserSerializer(serializers.ModelSerializer):
         # token = jwt_encode_handler(payload)
 
         return user
+
+class UserCenterInfoSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'mobile', 'email', 'email_active']
+
+
+

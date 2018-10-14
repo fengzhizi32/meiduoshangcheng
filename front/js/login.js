@@ -96,6 +96,19 @@ var vm = new Vue({
                 .catch(error => {
                     console.log(error.response.data);
                 })
+        },
+        // 微信登陆
+        weixin_login: function () {
+            var state = this.get_query_string('next') || '/';
+            axios.get(this.host + '/oauth/weixin/statues/?state=' + state, {
+                    responseType: 'json'
+                })
+                .then(response => {
+                    location.href = response.data.auth_url;
+                })
+                .catch(error => {
+                    console.log(error.response.data);
+                })
         }
 
     }

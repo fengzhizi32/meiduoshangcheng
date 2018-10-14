@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views import View
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import User
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.generics import CreateAPIView
-from .serializers import RegisterCreateUserSerializer
+from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer
 
 # 导入:因为我们已经告知系统 子应用从app里去查找,所以就不用设置app.
 # from apps.users.models import User    #错误的方式
@@ -88,5 +89,40 @@ class RegisterCreateUserView(APIView):
 
         # 4.返回响应
         return Response(serializer.data)
+
+
+# 用户中心个人信息
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
+class UserCenterInfoView(APIView):
+    """
+    获取登录用户的信息
+    GET /users/infos/
+    既然是登录用户,我们就要用到权限管理
+    在类视图对象中也保存了请求对象request
+    request对象的user属性是通过认证检验之后的请求用户对象
+    """
+
+    # 指定的视图中    设置权限
+    # IsAuthenticated  登陆用户(认证用户)
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+
+        # 1.获取用户信息
+        # 我们采用的是 jwt token 认证,只要前端传递的token是正确的, 就可以确认
+        # 登录用户 保存在request.user中
+        user = request.user
+
+        # 2.创建序列化器
+        serializer = UserCenterInfoSerializer(user)
+
+        # 3.返回响应
+        return Response(serializer.data)
+
+
+
+
+
+
 
 

@@ -10,26 +10,25 @@ from .models import OauthQQUser
 # ModelSerializer        ----优势并不明显
 # Serializer
 class QQ_TokenViewSerializer(serializers.Serializer):
-    """
-    创建QQ关联数据和用户模型数据
-    """
+    """创建QQ关联数据和用户模型数据"""
 
     access_token = serializers.CharField(label='操作token')
     # 正则匹配
-    mobile = serializers.RegexField(label='手机号',regex=r'^1[345789]\d{9}$')
-    password = serializers.CharField(label='密码',max_length=20,min_length=8)
-    sms_code = serializers.CharField(label='短信验证码',max_length=6,min_length=6)
+    mobile = serializers.RegexField(label='手机号', regex=r'^1[345789]\d{9}$')
+    password = serializers.CharField(label='密码', max_length=20, min_length=8)
+    sms_code = serializers.CharField(label='短信验证码', max_length=6, min_length=6)
 
+    # 验证
     def validate(self, attrs):
 
         # 验证用户提交的 access_token(openid)
         access_token = attrs['access_token']
-        openid = OauthQQUser.check_save_user_token(access_token)
+        openid = OauthQQUser.check_openid_token(access_token)
 
         if openid is None:
             raise serializers.ValidationError('数据错误:无效的token')
-#         #注意,为attr,添加 openid数据,以备保存数据使用
-#         attrs['openid'] = openid
+        #注意,为attrs添加 openid数据,以备validated_data保存数据使用
+        attrs['openid'] = openid
 
 
         #验证短信码
@@ -56,28 +55,27 @@ class QQ_TokenViewSerializer(serializers.Serializer):
             attrs['user'] = user
         return attrs
 
-
-
-
-
     def create(self, validated_data):
-#
-#         # 判断数据中是否有 user
-#         user = validated_data.get('user')
-#         if not user:
-#             # 不存在,就创建用户数据
-#             user = User.objects.create(
-#                 username=validated_data.get('mobile'),
-#                 password=validated_data.get('password'),
-#                 mobile=validated_data.get('mobile')
-#             )
-#             # 修改密码
-#             user.set_password(validated_data['password'])
-#             user.save()
-#         # 保存QQ授权数据
-#         OAuthQQUser.objects.create(
-#             openid=validated_data.get('openid'),
-#             user=user
-#         )
-#
+
+        # 判断数据中是否有 user
+        user = validated_data.get('user')
+        if user is None:
+            # 不存在,就创建用户数据
+            user = User.objects.create(
+                username=validated_data.get('mobile'),
+                password=validated_data.get('password'),
+                mobile=validated_data.get('mobile'),
+            )
+
+            # 修改密码
+            user.set_password(validated_data['password'])
+            user.save()
+
+        # 保存QQ授权数据      给绑定的用户模型进行数据入库
+        # 最终将 OauthQQUser 创建
+        OauthQQUser.objects.create(
+            openid=validated_data.get('openid'),
+            user=user,
+        )
+
         return user

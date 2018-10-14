@@ -11,9 +11,9 @@ logger = logging.getLogger('meiduo')
 def exception_handler(exc, context):
     """
     自定义异常处理
-    :param exc: 异常
-    :param context: 抛出异常的上下文
-    :return: Response响应对象
+    exc: 异常
+    context: 抛出异常的上下文
+    Response响应对象
     """
     # 调用drf框架原生的异常处理方法
     response = drf_exception_handler(exc, context)
