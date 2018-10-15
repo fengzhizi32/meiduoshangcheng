@@ -10,11 +10,12 @@ from django.shortcuts import render
 # 可以写两个视图   也可以使用视图集
 # from rest_framework_extensions.cache.mixins import ListCacheResponseMixin,RetrieveCacheResponseMixin,CacheResponseMixin
 from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework_extensions.cache.mixins import ListCacheResponseMixin, RetrieveCacheResponseMixin, CacheResponseMixin
 from .serializers import AreaSerializer, AreaSerializer_1
 from .models import Area
 
 
-class AreasReadOnlyViewSet(ReadOnlyModelViewSet):
+class AreasReadOnlyViewSet(CacheResponseMixin, ReadOnlyModelViewSet):
     """
     queryset -
         应该用于从此视图返回对象的查询集.通常,您必须设置此属性,或覆盖get_queryset()方法.
