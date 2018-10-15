@@ -167,6 +167,9 @@ class EmailSerializer(serializers.ModelSerializer):
         from django.core.mail import send_mail
         # send_mail(subject,message,from_email,recipient_list,html_message=None)
 
+        # 获取 id, email
+        verify_url = instance.generic_email_url(email)
+
         # subject 邮件标题
         subject = '邮件主题'
         # message 普通邮件正文， 普通字符串
@@ -178,7 +181,8 @@ class EmailSerializer(serializers.ModelSerializer):
         # 发送的比较复杂的heml页面    '<p><a href="%s">%s<a></p>'
         html_message = '<p>尊敬的用户您好！</p>' \
                        '<p>感谢您使用美多商城。</p>' \
-                       '<p>您的邮箱为：%s 。请点击此链接激活您的邮箱：</p>' % recipient_list
+                       '<p>您的邮箱为：%s 。请点击此链接激活您的邮箱：</p>'\
+                       '<p><a href="%s">%s<a></p>' % (recipient_list, verify_url, verify_url)
 
         #
         send_mail(
