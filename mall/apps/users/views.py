@@ -185,7 +185,7 @@ class UserCenterInfoView(RetrieveAPIView):
 
 """ UpdateAPIView """
 from rest_framework.generics import UpdateAPIView
-class UserEmialView(UpdateAPIView):
+class UserEmailView(UpdateAPIView):
 
     serializer_class = EmailSerializer
 

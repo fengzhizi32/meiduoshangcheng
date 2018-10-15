@@ -2,6 +2,7 @@
 import re
 from django_redis import get_redis_connection
 from rest_framework import serializers
+from django.conf import settings
 from .models import User
 
 # 采用 ModelSerializer
@@ -155,9 +156,49 @@ class EmailSerializer(serializers.ModelSerializer):
 
         # instance    -->     实例对象 user
         # validated     -->     验证之后的数据
-        instance.email = validated_data.get('email')
+        email = validated_data.get('email')
+        instance.email = email
         instance.save()
 
+        # 使用Django提供的模块发送邮件
+        # 在django.core.mail模块提供了send_mail来发送邮件。
+
         # 这里保存完之后,    发送激活邮件
+        from django.core.mail import send_mail
+        # send_mail(subject,message,from_email,recipient_list,html_message=None)
+
+        # subject 邮件标题
+        subject = '邮件主题'
+        # message 普通邮件正文， 普通字符串
+        message = '邮件内容'
+        # from_email 发件人
+        from_email = settings.EMAIL_HOST_USER
+        # recipient_list 收件人列表
+        recipient_list = [email]
+        # 发送的比较复杂的heml页面    '<p><a href="%s">%s<a></p>'
+        html_message = '<p>尊敬的用户您好！</p>' \
+                       '<p>感谢您使用美多商城。</p>' \
+                       '<p>您的邮箱为：%s 。请点击此链接激活您的邮箱：</p>' % recipient_list
+
+        #
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=from_email,
+            recipient_list=recipient_list,
+            html_message=html_message
+        )
 
         return instance
+
+        # msg = '<a href=' '"http://www.itcast.cn/subject/pythonzly/index.shtml" target="_blank">点击激活</a>'
+        # send_mail(
+        #     '注册激活',
+        #     '',
+        #     settings.EMAIL_FROM, ['qi_rui_hua@163.com'],
+        #     html_message=msg)
+
+
+
+
+
