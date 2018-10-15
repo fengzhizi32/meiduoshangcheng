@@ -10,7 +10,7 @@ from django.shortcuts import render
 # 可以写两个视图   也可以使用视图集
 # from rest_framework_extensions.cache.mixins import ListCacheResponseMixin,RetrieveCacheResponseMixin,CacheResponseMixin
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from .serializers import AreaSerializer, AreaSerializer1
+from .serializers import AreaSerializer, AreaSerializer_1
 from .models import Area
 
 
@@ -41,7 +41,7 @@ class AreasReadOnlyViewSet(ReadOnlyModelViewSet):
             return AreaSerializer
         else:
             # 市
-            return AreaSerializer1
+            return AreaSerializer_1
 
 
 
