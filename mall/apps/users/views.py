@@ -196,6 +196,23 @@ class UserEmailView(UpdateAPIView):
         return self.request.user
 
 
+from rest_framework import status
+class VerifyEmailView(APIView):
+    def get(self, request):
+
+        # 获取token
+        token = request.query_params.get('token')
+        # 判断token是否存在
+        if token is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        # 对token进行loads操作
+        user = User.check_verify_token(token)
+        if user is  None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        # 修改用户的email_active状态
+        user.email_active = True
+        user.save()
+        return Response({'message': 'ok'})
 
 
 

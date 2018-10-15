@@ -20,6 +20,8 @@ urlpatterns = [
 
     url(r'^emails/$', views.UserEmailView.as_view()),
 
+    url(r'^emails/verification/$', views.VerifyEmailView.as_view()),
+
     url(r'^$', views.RegisterCreateUserView.as_view()),
 
 

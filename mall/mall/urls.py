@@ -27,4 +27,6 @@ urlpatterns = [
 
     url(r'^oauth/', include('oauth.urls', namespace='oauth')),
 
+    url(r'^areas/', include('areas.urls', namespace='areas'))
+
 ]

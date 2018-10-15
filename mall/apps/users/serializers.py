@@ -3,6 +3,7 @@ import re
 from django_redis import get_redis_connection
 from rest_framework import serializers
 from django.conf import settings
+# from mall import settings
 from .models import User
 
 # 采用 ModelSerializer
@@ -171,7 +172,7 @@ class EmailSerializer(serializers.ModelSerializer):
         verify_url = instance.generic_email_url(email)
 
         # subject 邮件标题
-        subject = '邮件主题'
+        subject = '美多商城激活邮件'
         # message 普通邮件正文， 普通字符串
         message = '邮件内容'
         # from_email 发件人
@@ -183,15 +184,18 @@ class EmailSerializer(serializers.ModelSerializer):
                        '<p>感谢您使用美多商城。</p>' \
                        '<p>您的邮箱为：%s 。请点击此链接激活您的邮箱：</p>'\
                        '<p><a href="%s">%s<a></p>' % (recipient_list, verify_url, verify_url)
-
         #
-        send_mail(
-            subject=subject,
-            message=message,
-            from_email=from_email,
-            recipient_list=recipient_list,
-            html_message=html_message
-        )
+        # send_mail(
+        #     subject=subject,
+        #     message=message,
+        #     from_email=from_email,
+        #     recipient_list=recipient_list,
+        #     html_message=html_message
+        # )
+
+        from celery_tasks.email.tasks import send_verify_email
+
+        send_verify_email.delay(subject, message, from_email, recipient_list, html_message)
 
         return instance
 

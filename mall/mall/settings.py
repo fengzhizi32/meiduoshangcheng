@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     # 安装框架
     'rest_framework',
 
-    # 安装 cors
+    # 安装cors
     'corsheaders',
 
     # 安装应用
