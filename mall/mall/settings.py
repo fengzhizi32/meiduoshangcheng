@@ -11,6 +11,25 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 import os
 
+# 运行tracker:
+# docker run -dti   守护进程方式
+# --network=host    使用宿主的IP地址:192.168.142.150
+# --name tracker    起名字
+# -v /var/fdfs/tracker:/var/fdfs    地址目录    虚拟目录: 真是目录
+# delron/fastdfs    镜像名字
+# tracker   镜像执行的第一条指令
+
+# 运行storage:
+# docker run -dti
+# --network=host
+# --name storage
+# -e TRACKER_SERVER=192.168.229.133:22122
+# -v /var/fdfs/storage:/var/fdfs
+# delron/fastdfs
+# storage
+
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
