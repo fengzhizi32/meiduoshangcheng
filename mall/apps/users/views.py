@@ -7,7 +7,7 @@ from .models import User
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.generics import CreateAPIView
-from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer, EmailSerializer
+from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer, EmailSerializer, AddressSerializer
 
 # 导入:因为我们已经告知系统 子应用从app里去查找,所以就不用设置app.
 # from apps.users.models import User    #错误的方式
@@ -197,7 +197,8 @@ class UserEmailView(UpdateAPIView):
 
 
 from rest_framework import status
-class VerifyEmailView(APIView):
+class UserEmailActiveView(APIView):
+
     def get(self, request):
 
         # 获取token
@@ -215,8 +216,25 @@ class VerifyEmailView(APIView):
         return Response({'message': 'ok'})
 
 
+# 地址
+class AddressView(APIView):
+    """
+    POST    users/addresses/
+    """
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        """
+        1.接收前端提交的数据
+        2.对数据进行校验
+        3.保存数据
+        4.返回响应
+        """
+        data = request.data
 
+        serializer = AddressSerializer(data=data, context={'request': request})
 
+        serializer.is_valid(raise_exception=True)
 
+        serializer.save()
 
-
+        return Response(serializer.data)

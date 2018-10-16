@@ -9,6 +9,7 @@ from django.shortcuts import render
 # GET   /areas/infos/(?P<pk>\d+)/
 # 可以写两个视图   也可以使用视图集
 # from rest_framework_extensions.cache.mixins import ListCacheResponseMixin,RetrieveCacheResponseMixin,CacheResponseMixin
+from rest_framework.views import APIView
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework_extensions.cache.mixins import ListCacheResponseMixin, RetrieveCacheResponseMixin, CacheResponseMixin
 from .serializers import AreaSerializer, AreaSerializer_1
@@ -44,6 +45,5 @@ class AreasReadOnlyViewSet(CacheResponseMixin, ReadOnlyModelViewSet):
             # 市
             return AreaSerializer_1
 
-
-
     # serializer_class = AreaSerializer
+
