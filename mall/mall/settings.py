@@ -60,17 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # 安装框架
-    'rest_framework',
-
-    # 安装cors
-    'corsheaders',
-
-    'ckeditor',  # 富文本编辑器
-    'ckeditor_uploader',  # 富文本编辑器上传图片模块
-
-    # 安装应用
+    # 安装子应用
     'areas.apps.AreasConfig',
     'cart.apps.CartConfig',
     'contents.apps.ContentsConfig',
@@ -80,9 +70,19 @@ INSTALLED_APPS = [
     'pay.apps.PayConfig',
     'users.apps.UsersConfig',
     'verifications.apps.VerificationsConfig',
-
+    'rest_framework',  # 安装框架
+    'corsheaders',  # 安装cors
+    'ckeditor',  # 富文本编辑器
+    'ckeditor_uploader',  # 富文本编辑器上传图片模块
+    'django_crontab',  # 定时任务
 ]
 
+# 定时任务  系统级别的
+CRONJOBS = [
+    # 每5分钟执行一次生成主页静态文件
+    # 参数一:频率    参数二:执行的任务   参数三:日志路径,注意:日志路径不能错
+    ('*/1 * * * *', 'contents.crons.generate_static_index_html', '>> /home/python/Django/meiduoshangcheng/mall/logs/crontab.log')
+]
 
 MIDDLEWARE = [
     # 必须放在最上边
@@ -328,3 +328,4 @@ CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所�
 
 # 生成的静态html文件保存目录
 GENERATED_STATIC_HTML_FILES_DIR = os.path.join(os.path.dirname(BASE_DIR), 'front')
+
