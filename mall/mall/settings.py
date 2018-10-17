@@ -67,6 +67,9 @@ INSTALLED_APPS = [
     # 安装cors
     'corsheaders',
 
+    'ckeditor',  # 富文本编辑器
+    'ckeditor_uploader',  # 富文本编辑器上传图片模块
+
     # 安装应用
     'areas.apps.AreasConfig',
     'cart.apps.CartConfig',
@@ -312,3 +315,13 @@ FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'utils/fastdfs/client.conf')
 
 # django文件存储
 DEFAULT_FILE_STORAGE = 'utils.fastdfs.storage.MyStorage'
+
+# 富文本编辑器ckeditor配置
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # 工具条功能
+        'height': 300,  # 编辑器高度
+        # 'width': 300,  # 编辑器宽
+    },
+}
+CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所以此处设为''

@@ -1,3 +1,6 @@
+# 运营:确保网站的运营,如数据的变动
+# 运维:确保网站的维护
+
 from django.core.files.storage import Storage
 from django.conf import settings
 from django.utils.deconstruct import deconstructible
