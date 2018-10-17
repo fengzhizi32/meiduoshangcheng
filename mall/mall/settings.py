@@ -305,3 +305,10 @@ REST_FRAMEWORK_EXTENSIONS = {
     # 缓存存储
     'DEFAULT_USE_CACHE': 'default',
 }
+
+# FastDFS 的配置
+FDFS_URL = 'http://192.168.142.150:8888/'  # 访问图片的路径域名 ip地址修改为自己机器的ip地址
+FDFS_CLIENT_CONF = os.path.join(BASE_DIR, 'utils/fastdfs/client.conf')
+
+# django文件存储
+DEFAULT_FILE_STORAGE = 'utils.fastdfs.storage.MyStorage'
