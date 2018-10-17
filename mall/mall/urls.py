@@ -31,4 +31,6 @@ urlpatterns = [
 
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 
+    url(r'^goods/', include('goods.urls', namespace='goods')),
+
 ]
