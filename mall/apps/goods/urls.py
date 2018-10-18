@@ -9,5 +9,7 @@ urlpatterns = [
 
     url(r'^categories/(?P<category_id>\d+)/hotskus/$', views.HotSKUListView.as_view()),
 
+    url(r'^categories/(?P<category_id>\d+)/skulist/$', views.SKUListView.as_view()),
+
     # url(r'^dsq/$', crons.generate_static_index_html(), name='dingshiqi'),
 ]

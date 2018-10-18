@@ -1,7 +1,8 @@
 from collections import OrderedDict
 from rest_framework.generics import ListAPIView
 from django.shortcuts import render
-
+from rest_framework.filters import OrderingFilter
+from rest_framework.pagination import LimitOffsetPagination
 # Create your views here.
 # 1.我们在定义模型类的时候, 尽量多的分析字段(把字段罗列出来),不要分析表和表之间的关系
 #    比较明显的表, 使可以分析和实现的(单独定义一个表,不是说表和表之间的关系
@@ -107,4 +108,25 @@ class HotSKUListView(ListAPIView):
     # 满足不了需求,所以重写一个queryset
     def get_queryset(self):
         category_id = self.kwargs.get('category_id')
-        return SKU.objects.filter(category=category_id)
+        return SKU.objects.filter(category=category_id)[:2]
+
+# 商品数据列表
+class SKUListView(ListAPIView):
+    """
+    商品列表数据
+    GET /goods/categories/(?P<category_id>\d+)/skus/?page=xxx&page_size=xxx&ordering=xxx
+    """
+
+    serializer_class = SUKSerializer
+
+    filter_backends = [OrderingFilter]
+    # 排序
+    ordering_fields = ['create_time', 'price', 'sales']
+    # 默认url是:  http://ip/?ordering = price
+
+    # 分页
+    # pagination_class = LimitOffsetPagination
+
+    def get_queryset(self):
+        category_id = self.kwargs.get('category_id')
+        return SKU.objects.filter(category=category_id, is_launched=True)
