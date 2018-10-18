@@ -1,17 +1,16 @@
 import time
 import os
 from goods.models import GoodsChannel
+from mall.settings import BASE_DIR
 from .models import ContentCategory
 from collections import OrderedDict
 from django.template import loader
 from django.conf import settings
 
 
-
+# 生成静态的主页html
 def generate_static_index_html():
-    """
-    生成静态的主页html
-    """
+    """生成静态的主页html"""
 
     print('%s:generate_static_index' % time.ctime())
     # 商品频道及分类菜单
@@ -82,8 +81,12 @@ def generate_static_index_html():
         # 渲染成功后,返回给我们的html
     html_data = template.render(context)
 
-    #将文件写入  把html数据写入到指定的路径
+    #3.将文件写入  把html数据写入到指定的路径
     # GENERATED_STATIC_HTML_FILES_DIR --->相当于meiduoshangcheng/front
-    file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR,'index.html')
+    # file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR, 'index.html')
+    file_path = os.path.join(os.path.join(os.path.dirname(BASE_DIR), 'front'), 'index.html')
+    # file_path = '/home/python/Django/meiduoshangcheng/front/index.html'
     with open(file_path,'w') as f:
         f.write(html_data)
+
+    # 静态化技术 将查询的数据 通过模板进行渲染,我们再把渲染好的html写入到指定目录

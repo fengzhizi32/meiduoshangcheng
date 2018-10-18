@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 import os
-
+# coding:utf8
 # 运行tracker:
 # docker run -dti   守护进程方式
 # --network=host    使用宿主的IP地址:192.168.142.150
@@ -49,7 +49,7 @@ ALLOWED_HOSTS = ['*']
 # 因为我们把子应用全部放到了 apps的子文件夹中,所以我们需要告知系统
 # 去哪里找子应用
 import sys
-sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
 # Application definition
 
@@ -83,6 +83,9 @@ CRONJOBS = [
     # 参数一:频率    参数二:执行的任务   参数三:日志路径,注意:日志路径不能错
     ('*/1 * * * *', 'contents.crons.generate_static_index_html', '>> /home/python/Django/meiduoshangcheng/mall/logs/crontab.log')
 ]
+
+# 解决crontab中文问题
+CRONTAB_COMMAND_PREFIX = 'LANG_ALL=zh_cn.UTF-8'
 
 MIDDLEWARE = [
     # 必须放在最上边
@@ -328,4 +331,5 @@ CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所�
 
 # 生成的静态html文件保存目录
 GENERATED_STATIC_HTML_FILES_DIR = os.path.join(os.path.dirname(BASE_DIR), 'front')
+# GENERATED_STATIC_HTML_FILES_DIR = os.path.dirname(BASE_DIR), 'front'
 

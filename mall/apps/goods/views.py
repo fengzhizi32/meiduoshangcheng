@@ -1,5 +1,5 @@
 from collections import OrderedDict
-
+from rest_framework.generics import ListAPIView
 from django.shortcuts import render
 
 # Create your views here.
@@ -19,13 +19,14 @@ from django.shortcuts import render
 # 1.我们可以缓存数据
 # 2.静态化--->所谓静态化,其实就是:让用户访问我们提前准备好的html页面
     # 2.1确保业务逻辑(数据)是正确的
-
+from .serializers import SUKSerializer
 from django.views import View
-
+from .models import SKU
 from contents.models import ContentCategory
 from goods.models import GoodsChannel
 
 
+# 获取首页分类数据
 class HomeView(View):
     def get(self, request):
         # 使用有序字典保存类别的顺序
@@ -91,3 +92,19 @@ class HomeView(View):
             'contents': contents
         }
         return render(request, 'index.html', context)
+
+
+# 热销排行
+class HotSKUListView(ListAPIView):
+    """
+    1.根据分类获取当前分类的前两条数据
+    GET /goods/categories/(?P<category_id>\d+)/hotskus/
+    """
+    serializer_class = SUKSerializer
+
+    # queryset = SKU.objects.filter(category = 115)
+
+    # 满足不了需求,所以重写一个queryset
+    def get_queryset(self):
+        category_id = self.kwargs.get('category_id')
+        return SKU.objects.filter(category=category_id)

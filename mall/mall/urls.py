@@ -33,4 +33,5 @@ urlpatterns = [
 
     url(r'^goods/', include('goods.urls', namespace='goods')),
 
+
 ]

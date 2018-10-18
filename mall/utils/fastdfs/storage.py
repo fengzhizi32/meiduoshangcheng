@@ -40,7 +40,7 @@ class MyStorage(Storage):
         # client = Fdfs_client(settings.FDFS_CLIENT_CONF)
         client = Fdfs_client(self.path)
 
-        # 2.获取图片内容并上传
+         # 2.获取图片内容并上传
         # 注意点:content是图片二进制内容
         file_data = content.read()
         # buffer 上传二进制
