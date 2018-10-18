@@ -20,6 +20,13 @@ from rest_framework.pagination import LimitOffsetPagination
 # 1.我们可以缓存数据
 # 2.静态化--->所谓静态化,其实就是:让用户访问我们提前准备好的html页面
     # 2.1确保业务逻辑(数据)是正确的
+    # 2.2实现生成 静态页面
+
+# 列表数据为什么没有采用 定时任务 , 而是采用异步任务的触发
+# 1.列表数据不经常变动(分类数据)
+# 2.2分类发生变化的时候 应该触发 重写生成 静态文件
+
+
 from .serializers import SUKSerializer
 from django.views import View
 from .models import SKU
@@ -101,6 +108,9 @@ class HotSKUListView(ListAPIView):
     1.根据分类获取当前分类的前两条数据
     GET /goods/categories/(?P<category_id>\d+)/hotskus/
     """
+
+    pagination_class = None
+
     serializer_class = SUKSerializer
 
     # queryset = SKU.objects.filter(category = 115)
@@ -109,6 +119,7 @@ class HotSKUListView(ListAPIView):
     def get_queryset(self):
         category_id = self.kwargs.get('category_id')
         return SKU.objects.filter(category=category_id)[:2]
+
 
 # 商品数据列表
 class SKUListView(ListAPIView):

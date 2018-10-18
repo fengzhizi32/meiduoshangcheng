@@ -25,7 +25,7 @@ app.config_from_object('celery_tasks.config')
 # 4.自动检测任务,让broker去执行
 # 参数为列表形式: []
 # 每一项 就是 对应的 celery_tasks.sms
-app.autodiscover_tasks(['celery_tasks.sms', 'celery_tasks.email'])
+app.autodiscover_tasks(['celery_tasks.sms', 'celery_tasks.email', 'celery_tasks.html'])
 
 
 # worker 执行 是在 虚拟环境中 通过指令 等待broker 分配任务
