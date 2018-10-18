@@ -75,13 +75,14 @@ INSTALLED_APPS = [
     'ckeditor',  # 富文本编辑器
     'ckeditor_uploader',  # 富文本编辑器上传图片模块
     'django_crontab',  # 定时任务
+    'haystack',  # Elasticsearch搜索引擎
 ]
 
 # 定时任务  系统级别的
 CRONJOBS = [
     # 每5分钟执行一次生成主页静态文件
     # 参数一:频率    参数二:执行的任务   参数三:日志路径,注意:日志路径不能错
-    ('*/1 * * * *', 'contents.crons.generate_static_index_html', '>> /home/python/Django/meiduoshangcheng/mall/logs/crontab.log')
+    ('*/1 * * * *', 'contents.crons.generate_static_index_html', '>> /home/python/python/Django/meiduoshangcheng/mall/logs/crontab.log')
 ]
 
 # 解决crontab中文问题
@@ -335,3 +336,14 @@ CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所�
 GENERATED_STATIC_HTML_FILES_DIR = os.path.join(os.path.dirname(BASE_DIR), 'front')
 # GENERATED_STATIC_HTML_FILES_DIR = os.path.dirname(BASE_DIR), 'front'
 
+# Haystack
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://192.168.142.150:9200/',  # 此处为elasticsearch运行的服务器ip地址，端口号固定为9200
+        'INDEX_NAME': 'meiduo',  # 指定elasticsearch建立的索引库的名称
+    },
+}
+
+# 当添加、修改、删除数据时，自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

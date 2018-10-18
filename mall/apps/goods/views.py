@@ -27,12 +27,12 @@ from rest_framework.pagination import LimitOffsetPagination
 # 2.2分类发生变化的时候 应该触发 重写生成 静态文件
 
 
-from .serializers import SUKSerializer
+from .serializers import SUKSerializer, SKUIndexSerializer
 from django.views import View
 from .models import SKU
 from contents.models import ContentCategory
 from goods.models import GoodsChannel
-
+from drf_haystack.viewsets import HaystackViewSet
 
 # 获取首页分类数据
 class HomeView(View):
@@ -141,3 +141,12 @@ class SKUListView(ListAPIView):
     def get_queryset(self):
         category_id = self.kwargs.get('category_id')
         return SKU.objects.filter(category=category_id, is_launched=True)
+
+
+# SKU搜索
+class SKUSearchViewSet(HaystackViewSet):
+    """SKU搜索"""
+
+    index_models = [SKU]
+
+    serializer_class = SKUIndexSerializer

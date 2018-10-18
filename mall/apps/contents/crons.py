@@ -83,8 +83,8 @@ def generate_static_index_html():
 
     #3.将文件写入  把html数据写入到指定的路径
     # GENERATED_STATIC_HTML_FILES_DIR --->相当于meiduoshangcheng/front
-    # file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR, 'index.html')
-    file_path = os.path.join(os.path.join(os.path.dirname(BASE_DIR), 'front'), 'index.html')
+    file_path = os.path.join(settings.GENERATED_STATIC_HTML_FILES_DIR, 'index.html')
+    # file_path = os.path.join(os.path.join(os.path.dirname(BASE_DIR), 'front'), 'index.html')
     # file_path = '/home/python/Django/meiduoshangcheng/front/index.html'
     with open(file_path,'w') as f:
         f.write(html_data)

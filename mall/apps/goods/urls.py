@@ -4,6 +4,7 @@ from . import views
 from contents import crons
 
 urlpatterns = [
+
     #/goods/categories/
     url(r'^categories/$', views.HomeView.as_view(), name='cagegories'),
 
@@ -11,5 +12,11 @@ urlpatterns = [
 
     url(r'^categories/(?P<category_id>\d+)/skus/$', views.SKUListView.as_view()),
 
-    # url(r'^dsq/$', crons.generate_static_index_html(), name='dingshiqi'),
 ]
+
+
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register('search', views.SKUSearchViewSet, base_name='skus_search')
+
+urlpatterns += router.urls
