@@ -3,6 +3,12 @@ from rest_framework.generics import ListAPIView
 from django.shortcuts import render
 from rest_framework.filters import OrderingFilter
 from rest_framework.pagination import LimitOffsetPagination
+from .serializers import SUKSerializer, SKUIndexSerializer
+from django.views import View
+from .models import SKU
+from contents.models import ContentCategory
+from goods.models import GoodsChannel
+from drf_haystack.viewsets import HaystackViewSet
 # Create your views here.
 # 1.我们在定义模型类的时候, 尽量多的分析字段(把字段罗列出来),不要分析表和表之间的关系
 #    比较明显的表, 使可以分析和实现的(单独定义一个表,不是说表和表之间的关系
@@ -26,13 +32,6 @@ from rest_framework.pagination import LimitOffsetPagination
 # 1.列表数据不经常变动(分类数据)
 # 2.2分类发生变化的时候 应该触发 重写生成 静态文件
 
-
-from .serializers import SUKSerializer, SKUIndexSerializer
-from django.views import View
-from .models import SKU
-from contents.models import ContentCategory
-from goods.models import GoodsChannel
-from drf_haystack.viewsets import HaystackViewSet
 
 # 获取首页分类数据
 class HomeView(View):

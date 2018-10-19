@@ -51,6 +51,9 @@ ALLOWED_HOSTS = ['*']
 import sys
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
+CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -192,6 +195,13 @@ CACHES = {
     "code": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    },
+    "cart": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/4",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }

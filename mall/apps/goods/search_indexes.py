@@ -8,7 +8,8 @@ class SKUIndex(indexes.SearchIndex, indexes.Indexable):
     # document=True 确定那个字段是搜索的主要字段
     # use_template=True 可以使用模板来定义全文检索的字段
     text = indexes.CharField(document=True, use_template=True)
-
+    
+    # 在搜索的结果中现实的字段
     id = indexes.IntegerField(model_attr='id')
     name = indexes.CharField(model_attr='name')
     price = indexes.DecimalField(model_attr='price')

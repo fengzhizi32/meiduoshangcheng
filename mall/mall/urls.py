@@ -33,5 +33,7 @@ urlpatterns = [
 
     url(r'^goods/', include('goods.urls', namespace='goods')),
 
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+
 
 ]

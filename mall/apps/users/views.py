@@ -239,3 +239,20 @@ class AddressView(APIView):
         serializer.save()
 
         return Response(serializer.data)
+
+
+
+# 面那里添加? 哪里记录? 在用户中心
+# 用户在登录之后 访问详情页面的时候 粗要让前端发送一个请求
+# 这个请求包含:这个请求包含 商品ID 和用户信息(token)
+# 后端接收数据
+# 添加浏览记录[数据库,redis中] 选择存储在redis 中
+# 返回响应
+
+
+
+
+
+
+
+# 用户的浏览记录  需要登陆才可以访问
