@@ -1,13 +1,18 @@
 from django.shortcuts import render
 from django.views import View
+from django_redis import get_redis_connection
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from goods.models import SKU
+from goods.serializers import SUKSerializer
 from .models import User
 from rest_framework.generics import GenericAPIView
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.generics import CreateAPIView
-from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer, EmailSerializer, AddressSerializer
+from .serializers import RegisterCreateUserSerializer, UserCenterInfoSerializer, EmailSerializer, AddressSerializer, \
+    UserHistorySerializer
 
 # 导入:因为我们已经告知系统 子应用从app里去查找,所以就不用设置app.
 # from apps.users.models import User    #错误的方式
@@ -241,18 +246,77 @@ class AddressView(APIView):
         return Response(serializer.data)
 
 
+# 我们只记录: 登录用户的浏览记录
 
-# 面那里添加? 哪里记录? 在用户中心
-# 用户在登录之后 访问详情页面的时候 粗要让前端发送一个请求
+# 1.哪里添加? 哪里记录? 在用户中心
+# 用户在登录之后 访问详情页面的时候 需要让前端发送一个请求
 # 这个请求包含:这个请求包含 商品ID 和用户信息(token)
 # 后端接收数据
 # 添加浏览记录[数据库,redis中] 选择存储在redis 中
 # 返回响应
 
+class UserHistoryView(APIView):
+    """
+    POST    /user/browerhistories/
+    """
+    # 用户为登陆状态
+    permission_classes = [IsAuthenticated]
+    # 采用jwt进行验证, 前端在传递 商品id 和 token的时候
+    # token 会在 请求的header中添加
+    # 商品id 会在 请求的body中添加
+
+    def post(self, request):
+
+        # 1.接收数据
+        data = request.data
+        # 2.通过序列化器校验
+        serializer = UserHistorySerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+
+        sku_id = serializer.validated_data.get('sku_id')
+         # 3.数据入库    Redis的什么类型数据中--->列表实现
+            # 连接redis
+        redis_conn = get_redis_connection('history')
+            # 添加到redis中, 先把已经存在的商品id删除
+        redis_conn.lrem('history_%s' % request.user.id, 0, sku_id)
+            # 再添加
+        redis_conn.lpush('history_%d' % request.user.id, sku_id)
+            # 截取列表的前五个
+        redis_conn.ltrim('history_%s' % request.user.id, 0, 4)
+        print(serializer.data)
+        # 4.返回
+        return Response(serializer.data)
+
+    def get(self, request):
+
+        # 1.用户信息已经检验, 因为已经添加了权限
+        # 2.得到用户的 id
+        user_id = request.user.id
+        # 3.连接到redis 获取 sku_id
+        redis_conn = get_redis_connection('history')
+        sku_ids = redis_conn.lrange('history_%s'%user_id, 0, 5)
+        # 4.[1, 2, 3] 根据id获取商品的详细信息
+
+        # skus = SKU.objects.filter(id__in=sku_ids)   # id 查询会出现数据顺序错误
+
+        skus = []
+        for sku_id in sku_ids:
+            sku = SKU.objects.get(pk = sku_id)
+            skus.append(sku)
+
+        # 5.[SKU, SKU, SKU] 需要将对象列表转换为 字典
+        serializer = SUKSerializer(skus, many=True)
+        # 6.返回数据
+        print(serializer.data)
+        return Response(serializer.data)
 
 
 
 
 
 
-# 用户的浏览记录  需要登陆才可以访问
+
+
+
+
+

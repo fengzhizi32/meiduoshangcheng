@@ -4,6 +4,7 @@ from django_redis import get_redis_connection
 from rest_framework import serializers
 from django.conf import settings
 # from mall import settings
+from goods.models import SKU
 from .models import User
 
 # 采用 ModelSerializer
@@ -230,8 +231,23 @@ class AddressSerializer(serializers.ModelSerializer):
 
         # return super().create(validated_data)
 
-        pass
 
 
+class UserHistorySerializer(serializers.Serializer):
+
+    sku_id = serializers.CharField(label='sku_id', required=True)
+
+    # 验证
+    def validate(self, attrs):
+
+        # 判断 商品id是否存在
+
+        try:
+            SKU.objects.get(pk=attrs.get('sku_id'))
+        except SKU.DoesNotExist:
+            raise serializers.ValidationError('商品不存在')
+
+
+        return attrs
 
 

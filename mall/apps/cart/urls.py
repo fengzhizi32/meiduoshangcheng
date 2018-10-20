@@ -3,6 +3,6 @@ from . import views
 
 urlpatterns = [
 
-    # url(r'^$', views.CartView.as_view(), name='cart')
+    url(r'^$', views.CartView.as_view(), name='cart')
 
 ]

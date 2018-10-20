@@ -23,6 +23,8 @@ urlpatterns = [
 
     url(r'^addresses/$', views.AddressView.as_view()),
 
+    url(r'^browerhistories/$', views.UserHistoryView.as_view()),
+
     url(r'^$', views.RegisterCreateUserView.as_view()),
 
 
